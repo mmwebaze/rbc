@@ -1,0 +1,96 @@
+<html ng-app="rbcapp">
+
+<head>
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" />
+	<!-- Chart related Stylesheets -->
+	<link rel="stylesheet" href="css/nv.d3.css" type="text/css" />
+	<link rel="stylesheet" href="css/c3.css" type="text/css">
+
+	<!-- Stylesheets specific to RBC Dashboard App -->
+	<link type="text/css" rel="stylesheet" href="css/custom/rbc.css" />
+
+	<!-- Stylesheets specific to the DHIS2 menu -->
+	<link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/font-awesome/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="../../../dhis-web-commons/css/menu.css" />
+	<!-- Stylesheets related to the DHIS2 menu -->
+	<link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/font-awesome/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="../../../dhis-web-commons/css/menu.css" />
+
+</head>
+
+<body>
+	<nav class="navbar navbar-dhis" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<div class="navbar-brand" href="#/dashboard">Rwanda Biomedical Center</div>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="">Dashboard<span class="caret"></span></a>
+					<ul class="dropdown-menu divider">
+						<li><a href="#/hiv">HIV</a></li>
+						<li><a href="#/malaria">MALARIA</a></li>
+						<li><a href="#/mcch">MCCH</a></li>
+						<li><a href="#/mppd">MPPD</a></li>
+						<li><a href="#/tb">TB</a></li>
+					</ul>
+				</li>
+				<!-- <li>
+					<a href="#/visualizer">Visualizer</a>
+				</li> -->
+				<li>
+					<a href="#/about">about</a>
+				</li>
+			</ul>
+			<!--<div id="dhisDropDownMenu"></div>-->
+			<div d2-menu></div>
+		</div>
+	</nav>
+	<div ng-view> </div>
+	<!-- Required scripts -->
+	<script src="js/lib/jquery-2.1.4.min.js"></script>
+	<script src="js/lib/bootstrap.min.js"></script>
+
+	<script src="js/lib/angular.min.js"></script>
+	<script src="js/lib/ui-bootstrap-tpls-2.1.1.min.js"></script>
+	<script src="js/lib/angular-route.min.js"></script>
+	<script src="js/lib/angular-resource.js"></script>
+	<script type="text/javascript" src="js/lib/d3.js"></script>
+	<script type="text/javascript" src="js/lib/c3.min.js"></script>
+	<script type="text/javascript" src="js/lib/nv.d3.min.js"></script>
+	<script type="text/javascript" src="js/lib/jquery-blink.js"></script>
+	<script>
+		window.dhis2 = window.dhis2 || {};
+		dhis2.settings = dhis2.settings || {};
+		dhis2.settings.baseUrl = 'dhis';
+	</script>
+	<!-- DHIS2 Menu scripts -->
+
+	<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.translate.js"></script>
+	<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.menu.js"></script>
+	<script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.menu.ui.js"></script>
+	
+	<!-- RBC Dashboard Custom scripts -->
+	<script type="text/javascript" src="js/custom/AppVariables.js"></script>
+	<script type="text/javascript" src="js/custom/utils/utils.js"></script>
+	<script type="text/javascript" src="js/custom/charts/bulletChart.js"></script>
+	<script type="text/javascript" src="js/custom/services/services.js"></script>
+	<script type="text/javascript" src="js/custom/services/PeriodServices.js"></script>
+	<script type="text/javascript" src="js/custom/services/SetupServices.js"></script>
+	<script type="text/javascript" src="js/custom/services/DashboardService.js"></script>
+	<script type="text/javascript" src="js/custom/chartService.js"></script>
+	<script type="text/javascript" src="js/custom/services/VisualizerServices.js"></script>
+	<!-- <script type="text/javascript" src="js/custom/services/AlertServices.js"></script> -->
+	<script type="text/javascript" src="js/custom/services/ExploreServices.js"></script>
+	<script type="text/javascript" src="js/custom/controllers/SetupControllers.js"></script>
+	<script type="text/javascript" src="js/custom/controllers/ExploreControllers.js"></script>
+	<script type="text/javascript" src="js/custom/controllers/AlertController.js"></script>
+	<script type="text/javascript" src="js/custom/controllers/MalariaControllers.js"></script>
+	<script type="text/javascript" src="js/custom/controllers/VisualizerController.js"></script>
+	<script type="text/javascript" src="js/custom/controllers/DashboardController.js"></script>
+	<script type="text/javascript" src="js/custom/rbcapp.js"></script>
+</body>
+
+</html>

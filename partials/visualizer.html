@@ -1,0 +1,72 @@
+<div class="container-fluid" ng-controller="dimensionController">
+	<div class="row">
+		<div class="col-sm-2" ng-controller="createChartController">
+			<div class="row row-buffer radio">
+				<div class="col-sm-3">
+					<label>
+						<input type="radio" class="radio-inline" name="chartGrp" ng-model="typeChart" ng-click="selectedRadio('bar')" ng-value="'bar'"><i class="fa fa-bar-chart-o fa-2x"></i></input>
+					</label>
+				</div>
+				<div class="col-sm-3">
+					<label>
+						<input type="radio" class="radio-inline" name="chartGrp" ng-model="typeChart" ng-click="selectedRadio('line')" ng-value="'line'"><i class="fa fa-line-chart fa-2x"></i></input>
+					</label>
+				</div>
+				<div class="col-sm-3">
+					<label>
+						<input type="radio" class="radio-inline" name="chartGrp" ng-model="typeChart" ng-click="selectedRadio('tacho')" ng-value="'tacho'"><i class="fa fa-tachometer fa-2x"></i></input>
+					</label>
+				</div>
+				<div class="col-sm-3">
+					<label>
+						<input type="radio" class="radio-inline" name="chartGrp" ng-model="typeChart" ng-click="selectedRadio('pie')" ng-value="'pie'"><i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i></input>
+					</label>
+				</div>
+			</div>
+			<div class="row label-space-1"><span class="label label-info">Data</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedDataElement.id" ng-options="de.id as de.displayName for de in dataElements"></select>
+			</div>
+			<div class="row row-buffer"></div>
+			<div class="row label-space-1"><span class="label label-info">Period</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedPeriod.id" ng-options="pe.id as pe.textValue for pe in periods">
+					<!--<option ng-repeat="(key, value) in periods" value={{key}}> {{value}}</option>-->
+				</select>
+			</div>
+			<div class="row row-buffer"></div>
+			<div class="row label-space-1"><span class="label label-info">Organisation Unit</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedOrgUnit.id" ng-options="ou.id as ou.displayName for ou in orgUnits"></select>
+			</div>
+			<div class="row row-buffer">
+				<button id="createChart" type="button" class="btn btn-primary" ng-click="createChart(selectedDataElement.id, selectedPeriod.id, selectedOrgUnit.id)">Create Chart</button>
+			</div>
+		</div>
+		<div class="col-sm-10">
+
+			<div class="row well" ng-controller="dashboardsController">
+
+				<div class="col-sm-2"></div>
+				<div class="col-sm-5">
+					<textarea class="form-control" rows="2" required="true" ng-model="chartTitle"></textarea>
+				</div>
+				<div class="col-sm-3">
+					<div><span class="badge">Dashboards</span>
+						<select class="form-control" ng-model="defaultDashboard" ng-options="dash for dash in dashboards | filter: filterDashboard"></select>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<div ng-controller="SaveChartController">
+						<button id="saveChart" type="button" class="btn btn-primary" ng-click="saveChart(typeChart, chartTitle, defaultDashboard, selectedDataElement.id, selectedPeriod.id, selectedOrgUnit.id)">Save</button>
+					</div>
+				</div>
+			</div>
+			<div id="chart" class="row well">
+				<svg style="height:80px"></svg>
+			</div>
+
+		</div>
+
+	</div>
+</div>

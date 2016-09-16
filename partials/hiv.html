@@ -1,0 +1,52 @@
+<html>
+
+<head>
+	<meta name="generator" content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+	<title></title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="container-fluid">
+			<div ng-include="'partials/alerts.html'"></div>
+			<div ng-controller="TabCtrl">
+				<div>
+					<ul class="nav nav-tabs">
+						<li ng-class="{active:isSelected(1)}">
+							<a href ng-click="selectTab(1)">System</a>
+						</li>
+						<li ng-class="{active:isSelected(2)}">
+							<a href ng-click="selectTab(2)">Inputs</a>
+						</li>
+						<li ng-class="{active:isSelected(3)}">
+							<a href ng-click="selectTab(3)" data-toggle="tab">System Delivery</a>
+						</li>
+						<li ng-class="{active:isSelected(4)}">
+							<a href ng-click="selectTab(4)" data-toggle="tab">Coverage</a>
+						</li>
+						<li ng-class="{active:isSelected(5)}">
+							<a href ng-click="selectTab(5)" data-toggle="tab">Outcomes</a>
+						</li>
+					</ul>
+				</div>
+				<div style="height: 5px;"></div>
+				<div class="tab-pane" ng-show="isSelected(1)">
+					<div ng-include="'partials/hiv_system.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(2)">
+					<div ng-include="'partials/hiv_inputs.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(3)">
+					<div ng-include="'partials/hiv_delivery.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(4)">
+					<div ng-include="'partials/hiv_coverage.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(5)">
+					<div ng-include="'partials/hiv_outcomes.html'"></div>
+				</div>
+			</div>
+		</div>
+</body>
+
+</html>

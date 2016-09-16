@@ -1,0 +1,18 @@
+{
+	"periods": [{
+		"id": "THIS_WEEK",
+		"textValue": "This Week"
+	}, {
+		"id": "LAST_WEEK",
+		"textValue": "Last Week"
+	}, {
+		"id": "LAST_4_WEEKS",
+		"textValue": "Last 4 Weeks"
+	}, {
+		"id": "LAST_12_WEEKS",
+		"textValue": "Last 12 Weeks"
+	}, {
+		"id": "LAST_52_WEEKS",
+		"textValue": "Last 52 Weeks"
+	}]
+}

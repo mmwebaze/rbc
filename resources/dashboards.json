@@ -1,0 +1,47 @@
+HIV Division dashboards
+
+{
+	"dashlets": [{
+		"id": "ezEceMFGiMc",
+		"name": "dashlet1",
+		"title": "My bullet chart title",
+		"link": "My bullet chart link",
+		"chartType": "bullet",
+		"target": "bullet target"
+	}, {
+		"id": "S1BR0HOSFuN",
+		"name": "dashlet2",
+		"title": "My gauge chart title",
+		"link": "My gauge chart link",
+		"chartType": "gauge",
+		"target": "gauge target"
+	}]
+}
+
+[
+	"HIV_SYSTEM",
+	"HIV_INPUTS",
+	"HIV_SERVICE_DELIVERY",
+	"HIV_COVERAGE",
+	"HIV_OUTCOMES",
+	"MALARIA_SYSTEM",
+	"MALARIA_INPUTS",
+	"MALARIA_SERVICE_DELIVERY",
+	"MALARIA_COVERAGE",
+	"MALARIA_OUTCOMES",
+	"MCCH_SYSTEM",
+	"MCCH_INPUTS",
+	"MCCH_SERVICE_DELIVERY",
+	"MCCH_COVERAGE",
+	"MCCH_OUTCOMES",
+	"MPPD_SYSTEM",
+	"MPPD_INPUTS",
+	"MPPD_SERVICE_DELIVERY",
+	"MPPD_COVERAGE",
+	"MPPD_OUTCOMES",
+	"TB_SYSTEM",
+	"TB_INPUTS",
+	"TB_SERVICE_DELIVERY",
+	"TB_COVERAGE",
+	"TB_OUTCOMES",
+]
