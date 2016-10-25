@@ -1,22 +1,17 @@
-<html>
-
-<head>
-	<meta name="generator" content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
-	<title></title>
-</head>
-
-<body>
 	<div class="container">
 		<div class="container-fluid">
 			<div ng-include="'partials/alerts.html'"></div>
 			<div ng-controller="TabCtrl">
 				<div>
 					<ul class="nav nav-tabs">
+						<!-- <li ng-class="{active:isSelected(1)}">
+							<a href ng-click="selectTab(1)">Home</a>
+						</li> -->
 						<li ng-class="{active:isSelected(1)}">
-							<a href ng-click="selectTab(1)">System</a>
+							<a href ng-click="selectTab(1)">Malaria System</a>
 						</li>
 						<li ng-class="{active:isSelected(2)}">
-							<a href ng-click="selectTab(2)">Inputs</a>
+							<a href ng-click="selectTab(2)">Malaria Inputs</a>
 						</li>
 						<li ng-class="{active:isSelected(3)}">
 							<a href ng-click="selectTab(3)" data-toggle="tab">System Delivery</a>
@@ -27,12 +22,12 @@
 						<li ng-class="{active:isSelected(5)}">
 							<a href ng-click="selectTab(5)" data-toggle="tab">Outcomes</a>
 						</li>
-						<li ng-class="{active:isSelected(6)}">
-							<a href ng-click="selectTab(6)">Home</a>
-						</li>
 					</ul>
 				</div>
 				<div style="height: 5px;"></div>
+				<!-- <div class="tab-pane" ng-show="isSelected(1)">
+					<div ng-include="'partials/malaria_home.html'"></div>
+				</div> -->
 				<div class="tab-pane" ng-show="isSelected(1)">
 					<div ng-include="'partials/malaria_system.html'"></div>
 				</div>
@@ -48,12 +43,8 @@
 				<div class="tab-pane" ng-show="isSelected(5)">
 					<div ng-include="'partials/malaria_outcomes.html'"></div>
 				</div>
-				<div class="tab-pane" ng-show="isSelected(6)">
-					<div ng-include="'partials/malaria_home.html'"></div>
-				</div>
 			</div>
 		</div>
 		<div id="malaria_main">{{dashboard}}</div>
-</body>
-
-</html>
+	</div>
+	</div>

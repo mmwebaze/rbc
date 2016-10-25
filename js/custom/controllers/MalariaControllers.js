@@ -8,7 +8,7 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 })
 
 .controller("malariaSystemCtrl", function ($scope, dashboardService, generateAnalyticService) {
-	//console.debug($scope.dashboard);
+	console.debug("Calling me...");
 	dashboardService.getDashboards(baseURL).get({
 		dashboard: 'MALARIA_SYSTEM'
 	}, function (dashboardDashlets) {

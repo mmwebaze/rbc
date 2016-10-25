@@ -1,28 +1,33 @@
-<div ng-controller="TabCtrl">
-	<div>
-		<ul class="nav nav-tabs">
-			<li ng-class="{active:isSelected(1)}">
-				<a href ng-click="selectTab(1)">System</a>
-			</li>
-			<li ng-class="{active:isSelected(2)}">
-				<a href ng-click="selectTab(2)">Inputs</a>
-			</li>
-			<li ng-class="{active:isSelected(3)}">
-				<a href ng-click="selectTab(3)" data-toggle="tab">System Delivery</a>
-			</li>
-			<li ng-class="{active:isSelected(4)}">
-				<a href ng-click="selectTab(4)" data-toggle="tab">Coverage</a>
-			</li>
-			<li ng-class="{active:isSelected(5)}">
-				<a href ng-click="selectTab(5)" data-toggle="tab">Outcomes</a>
-			</li>
-		</ul>
+<div class="container">
+	<div class="container-fluid">
+	<div ng-include="'partials/alerts.html'"></div>
+		<div ng-controller="TabCtrl">
+			<div>
+				<ul class="nav nav-tabs">
+					<li ng-class="{active:isSelected(1)}">
+						<a href ng-click="selectTab(1)">TB System</a>
+					</li>
+					<li ng-class="{active:isSelected(2)}">
+						<a href ng-click="selectTab(2)">TB nputs</a>
+					</li>
+					<li ng-class="{active:isSelected(3)}">
+						<a href ng-click="selectTab(3)" data-toggle="tab">System Delivery</a>
+					</li>
+					<li ng-class="{active:isSelected(4)}">
+						<a href ng-click="selectTab(4)" data-toggle="tab">Coverage</a>
+					</li>
+					<li ng-class="{active:isSelected(5)}">
+						<a href ng-click="selectTab(5)" data-toggle="tab">Outcomes</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="tab-pane" ng-show="isSelected(1)" ng-controller="tbSystemCtrl">{{name}}</div>
+			<div class="tab-pane" ng-show="isSelected(2)">Taby</div>
+			<div class="tab-pane" ng-show="isSelected(3)">Sirabo</div>
+			<div class="tab-pane" ng-show="isSelected(4)">Hon</div>
+			<div class="tab-pane" ng-show="isSelected(5)">people</div>
+
+		</div>
 	</div>
-
-	<div class="tab-pane" ng-show="isSelected(1)" ng-controller="hivSystemCtrl">{{name}}</div>
-	<div class="tab-pane" ng-show="isSelected(2)">Taby</div>
-	<div class="tab-pane" ng-show="isSelected(3)">Sirabo</div>
-	<div class="tab-pane" ng-show="isSelected(4)">Hon</div>
-	<div class="tab-pane" ng-show="isSelected(5)">people</div>
-
 </div>

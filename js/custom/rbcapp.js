@@ -14,7 +14,11 @@
 	'alert.controllers',
 	'setup.controllers',
 	'explore.controllers',
+	'hiv.controllers',
 	'malaria.controllers',
+	'mppd.controllers',
+	'mcch.controllers',
+	'tb.controllers',
 	'visualizer.controllers',
 	'dashboard.controllers'
 	]);
@@ -23,9 +27,8 @@
 	rbcapp.config(function ($routeProvider) {
 		$routeProvider
 			.when("/hiv", {
-				templateUrl: "partials/hiv.html"
-					//controller : "nationalController"
-					//controller: "extJsController"
+				templateUrl: "partials/hiv.html",
+				controller: "hivController"
 			})
 			.when("/malaria", {
 				templateUrl: "partials/malaria.html",
@@ -96,9 +99,9 @@
 			$scope.selectedOrgUnit = org.organisationUnits[0];
 		});
 	});
-	rbcapp.controller("hivSystemCtrl", function ($scope) {
+	/*rbcapp.controller("hivSystemCtrl", function ($scope) {
 		$scope.name = "michael";
-	});
+	});*/
 	rbcapp.controller("TabCtrl", function ($scope) {
 
 		this.tab = 1;
