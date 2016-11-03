@@ -1,31 +1,27 @@
 <div class="container-fluid" ng-controller="dimensionController">
 	<div class="row">
-		<div class="col-sm-2" ng-controller="createChartController">
-			<div class="row row-buffer radio">
-				<div class="col-sm-3">
-					<label>
-						<input type="radio" class="radio-inline" name="chartGrp" ng-model="typeChart" ng-click="selectedRadio('bar')" ng-value="'bar'"><i class="fa fa-bar-chart-o fa-2x"></i></input>
-					</label>
-				</div>
-				<div class="col-sm-3">
-					<label>
-						<input type="radio" class="radio-inline" name="chartGrp" ng-model="typeChart" ng-click="selectedRadio('line')" ng-value="'line'"><i class="fa fa-line-chart fa-2x"></i></input>
-					</label>
-				</div>
-				<div class="col-sm-3">
-					<label>
-						<input type="radio" class="radio-inline" name="chartGrp" ng-model="typeChart" ng-click="selectedRadio('tacho')" ng-value="'tacho'"><i class="fa fa-tachometer fa-2x"></i></input>
-					</label>
-				</div>
-				<div class="col-sm-3">
-					<label>
-						<input type="radio" class="radio-inline" name="chartGrp" ng-model="typeChart" ng-click="selectedRadio('pie')" ng-value="'pie'"><i class="fa fa-pie-chart fa-2x" aria-hidden="true"></i></input>
-					</label>
-				</div>
-			</div>
-			<div class="row label-space-1"><span class="label label-info">Data</span></div>
+		<div class="col-sm-2">
+			<!-- <div class="row row-buffer"></div> -->
+			
 			<div class="row">
-				<select class="form-control" ng-model="selectedDataElement.id" ng-options="de.id as de.displayName for de in dataElements"></select>
+			<div class="row label-space-1"><span class="label label-info">Select chart</span></div>
+				<select class="form-control" ng-model="typeChart">
+					<option value="bar">Bar</option>
+					<option value="line">Line</option>
+					<option value="tacho">Speed</option>
+					<option value="pie">Pie</option>
+					<option value="stacked">Stacked</option>
+					<option value="pivot">pivot</option>
+				</select>
+			</div>
+			<div class="row label-space-1"><span class="label label-info">Select Data Element Source</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedDataElementGroup.id"  ng-change="selectDataElementGroup(selectedDataElementGroup.id)" ng-options="deGrp.id as deGrp.displayName for deGrp in dataElementGroups"></select>
+			</div>
+			<div class="row row-buffer"></div>
+			<div class="row label-space-1"><span class="label label-info">Data Element</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedDataElement.id" ng-options="de.id as de.displayName for de in dataElements" multiple></select>
 			</div>
 			<div class="row row-buffer"></div>
 			<div class="row label-space-1"><span class="label label-info">Period</span></div>

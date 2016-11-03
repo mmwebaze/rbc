@@ -19,7 +19,6 @@ function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeCh
 
 		updatedDashboard.dashlets = dashlets;
 	} else {
-		console.debug('add dashlet')
 		dashlets.unshift(newDashlet);
 
 		updatedDashboard.dashlets = dashlets;
@@ -31,10 +30,17 @@ function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeCh
 dashlets*/
 function dashboardRows(numberDashlets) {
 
-	if (numberDashlets % 2 == 0)
-		return numberDashlets / 2;
-	else
-		return (numberDashlets + 1) / 2;
+	if (numberDashlets % 3 == 0)
+		return numberDashlets / 3;
+	else{
+		var reminder = numberDashlets % 3;
+		console.debug('reminder ->'+reminder);
+		var rows = (numberDashlets - reminder)/3;
+		
+		//return (numberDashlets + 1) / 2;
+
+		return rows + 1;
+	}
 }
 
 function manipulateData(metaDataNames, rows) {
@@ -63,22 +69,32 @@ function manipulateData(metaDataNames, rows) {
 	console.debug(dataRow);
 	return dataRow;
 }
+function setExploreSize(id){
+	var chartDim = {height: 250, width: 300};
 
-function generateBullet(id) {
+	if (id == 0) {
+		chartDim.height = chartDim.height * 2;
+		chartDim.width = chartDim.width * 2;
+	}
 
+	return chartDim;
+}
+function generateLine(id) {
+	var DimChart = setExploreSize(id)
+	
 	var chart = c3.generate({
 		bindto: '#graphx' + id,
 		size: {
-			height: 400,
-			width: 530
+			height: DimChart.height,
+			width: DimChart.width
 		},
 		data: {
 			x: 'x',
 			columns: [
-            ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-            ['data1', 30, 200, 100, 400, 150, 250],
-            ['data2', 130, 100, 140, 200, 150, 50]
-        ],
+			['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+			['data1', 30, 200, 100, 400, 150, 250],
+			['data2', 130, 100, 140, 200, 150, 50]
+			],
 			type: 'spline'
 		},
 		axis: {
@@ -93,29 +109,31 @@ function generateBullet(id) {
 			y: {
 				lines: [
 
-					{
-						value: 350,
-						text: 'target',
-						position: 'middle'
-					}
-            ]
+				{
+					value: 350,
+					text: 'target',
+					position: 'middle'
+				}
+				]
 			}
 		}
 	});
 }
 
 function generatePichart(id) {
+	var DimChart = setExploreSize(id);
+
 	var chart = c3.generate({
 		bindto: '#graphx' + id,
 		size: {
-			height: 400,
-			width: 530
+			height: DimChart.height,
+			width: DimChart.width
 		},
 		data: {
 			columns: [
-            ['data1', 30],
-            ['data2', 120],
-        ],
+			['data1', 30],
+			['data2', 120],
+			],
 			type: 'donut',
 			onclick: function (d, i) {
 				console.log("onclick", d, i);
@@ -134,16 +152,18 @@ function generatePichart(id) {
 }
 
 function generateGauge(id) {
+	var DimChart = setExploreSize(id);
+
 	var chart = c3.generate({
 		bindto: '#graphx' + id,
 		size: {
-			height: 400,
-			width: 530
+			height: DimChart.height,
+			width: DimChart.width
 		},
 		data: {
 			columns: [
-            ['ANC: Coverage', 91.4]
-        ],
+			['ANC: Coverage', 91.4]
+			],
 			type: 'gauge',
 
 			onmouseover: function (d, i) {
@@ -154,38 +174,34 @@ function generateGauge(id) {
 			y: {
 				lines: [
 
-					{
-						value: 350,
-						text: 'target',
-						position: 'middle'
-					}
-            ]
+				{
+					value: 350,
+					text: 'target',
+					position: 'middle'
+				}
+				]
 			}
 		}
 	})
 }
 
-function generateBar(id, dataRows) {
-	var height = 400,
-		width = 530;
-	if (id == 0) {
-		height = height * 2;
-		width = width * 3;
-	}
+function generateBar(id/*, dataRows*/) {
+	var DimChart = setExploreSize(id);
+
 	var chart = c3.generate({
 		bindto: '#graphx' + id,
 		size: {
-			height: height,
-			width: width
+			height: DimChart.height,
+			width: DimChart.width
 		},
 		data: {
 			//x: 'x',
-			columns: dataRows //[
-				//['x', 'm', 'y', 'z', 'a', 'b', 'k'],
-				//['Births', 30, 200, 100, 400, 150, 250],
-				//['BCG', 130, 100, 140, 200, 150, 50]
-				/*]*/
-				,
+			//columns: dataRows
+			columns: [
+			['Births', 30, 200, 100, 400, 150, 250],
+			['BCG', 130, 100, 140, 200, 150, 50]
+			]
+			,
 			type: 'bar'
 		},
 		/*axis: {
@@ -202,33 +218,59 @@ function generateBar(id, dataRows) {
 			//width: 100 // this makes bar width 100px
 		}
 	});
-	/*var chart = c3.generate({
+}
+
+function generateStackedBar(id) {
+	var DimChart = setExploreSize(id);
+
+	var chart = c3.generate({
 		bindto: '#graphx' + id,
 		size: {
-			height: 400,
-			width: 530
+			height: DimChart.height,
+			width: DimChart.width
 		},
 		data: {
-			rows: [
-  ['Births', 'BCG'],
-  [90, 120],
-  [40, 160],
-  [50, 200],
-  [120, 160],
-  [80, 130],
-  [90, 220],
-],
-			type: 'bar'
+			columns: [
+			['data1', -30, 200, 200, 400, -150, 250],
+			['data2', 130, 100, -100, 200, -150, 50],
+			['data3', -230, 200, 200, -300, 250, 250]
+			],
+			type: 'bar',
+			groups: [
+			['data1', 'data2']
+			]
 		},
-		bar: {
-			width: {
-				ratio: 0.5 // this makes bar width 50% of length between ticks
+		grid: {
+			y: {
+				lines: [{value:0}]
 			}
-			// or
-			//width: 100 // this makes bar width 100px
 		}
-	});*/
+	});
+}
+/*Embeds DHIS2 generated table into custom dashboard*/
+function embedPivotTable(id){
+	Ext.onReady(function() {
 
+		DHIS.getTable({
+			url: 'http://localhost:8181/dhis/',
+			//url: 'https://dhis2.jsi.com/dss/',
+			el: "graphx"+id,
+			//"id": "kqFYaIXuTn1",
+			"id": "T9cw92kNiDI",
+			fontSize: "normal",
+			legendSet: {"id": "s50spdzKeSU"}
+			//legendSet: {"id": "LrxfadsFqch"}
+		});
+	});
+}
+
+/*Replaces commas found in multiple selected data elements*/
+function replaceCommas(dx){
+	var dxString = dx.toString();
+	var replaceWith = ";"
+	dxString = dxString.replace(/,/g, replaceWith)
+	alert(dxString+' ***')
+	return dxString;
 }
 
 function getAnalyticLink(dashletUid, dashlets) {

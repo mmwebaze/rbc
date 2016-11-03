@@ -3,7 +3,7 @@
 angular.module('hiv.controllers', ['dashboard.services', 'rbc.services'])
 
 .controller("hivController", function ($scope) {
-	$scope.dashboard = "Main HIV Landing page";
+	$scope.dashboard = "HIV Dashboard";
 
 })
 

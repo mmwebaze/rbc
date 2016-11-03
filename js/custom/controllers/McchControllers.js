@@ -3,7 +3,7 @@
 angular.module('mcch.controllers', ['dashboard.services', 'rbc.services'])
 
 .controller("mcchController", function ($scope) {
-	$scope.dashboard = "Main mcch Landing page";
+	$scope.dashboard = "MCCH Dashboard";
 
 })
 

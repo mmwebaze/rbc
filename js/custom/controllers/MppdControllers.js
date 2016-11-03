@@ -3,7 +3,7 @@
 angular.module('mppd.controllers', ['dashboard.services', 'rbc.services'])
 
 .controller("mppdController", function ($scope) {
-	$scope.dashboard = "Main mppd Landing page";
+	$scope.dashboard = "MPPD Dashboard";
 
 })
 

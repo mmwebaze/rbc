@@ -11,7 +11,7 @@ angular.module('visualizer.controllers', ['dashboard.services', 'chartServices',
 
 .controller("SaveChartController", function ($scope, dashletService, analyticService, generateUidService, updateDashboardService,generateAnalyticService, $http) {
 	$scope.saveChart = function (typeChart, chartTitle, selectedDashboard, dx, pe, ou) {
-
+	
 		var getLink = function(dx, pe, ou){
 			return analyticService.getAnalyticsLink(baseURL, dx, pe, ou);
 		};
@@ -36,7 +36,7 @@ angular.module('visualizer.controllers', ['dashboard.services', 'chartServices',
 			if (chartTitle != null) {
 				var statusT = checkForData(link, visualHasData);
 				console.debug('statusT is '+statusT)
-				if (statusT){
+				//if (statusT){
 					var getUid = function(){
 						return generateUidService.generateUid(baseURL).get({});
 					}
@@ -50,11 +50,15 @@ angular.module('visualizer.controllers', ['dashboard.services', 'chartServices',
 						updateDashboardService.updateDashboardDashlet(selectedDashboard, numberDashlets, dashlets, uid.codes[0], chartTitle, link, typeChart);
 
 					});
-				}
-				else
-					alert('Visual has no data...');
+				//}
+				//else
+				//	alert('Visual has no data...');
 			} 
 			else
 				alert('Please submit title for the graph');
 		}
 	})
+
+/*.controller('chartTypeController', function($scope) {
+    $scope.charts = ["bar", "line", "tacho", 'pie', 'stacked'];
+});*/

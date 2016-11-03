@@ -4,6 +4,7 @@
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" />
+	
 	<!-- Chart related Stylesheets -->
 	<link rel="stylesheet" href="css/nv.d3.css" type="text/css" />
 	<link rel="stylesheet" href="css/c3.css" type="text/css">
@@ -17,6 +18,9 @@
 	<!-- Stylesheets related to the DHIS2 menu -->
 	<link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/font-awesome/css/font-awesome.min.css" />
 	<link type="text/css" rel="stylesheet" media="screen" href="../../../dhis-web-commons/css/menu.css" />
+
+	<!-- Embed map stylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/ext-all-gray.css" />
 
 </head>
 
@@ -37,12 +41,15 @@
 						<li><a href="#/tb">TB</a></li>
 					</ul>
 				</li>
-				<!-- <li>
+				 <li>
 					<a href="#/visualizer">Visualizer</a>
-				</li> -->
+				</li>
 				<li>
 					<a href="#/about">about</a>
 				</li>
+				<!-- <li>
+					<a href="#/setup">setup</a>
+				</li> -->
 			</ul>
 			<!--<div id="dhisDropDownMenu"></div>-->
 			<div d2-menu></div>
@@ -50,17 +57,22 @@
 	</nav>
 	<div ng-view> </div>
 	<!-- Required scripts -->
-	<script src="js/lib/jquery-2.1.4.min.js"></script>
-	<script src="js/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/lib/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
 
-	<script src="js/lib/angular.min.js"></script>
-	<script src="js/lib/ui-bootstrap-tpls-2.1.1.min.js"></script>
-	<script src="js/lib/angular-route.min.js"></script>
-	<script src="js/lib/angular-resource.js"></script>
+	<script type="text/javascript" src="js/lib/angular.min.js"></script>
+	<script type="text/javascript" src="js/lib/ui-bootstrap-tpls-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/lib/angular-resource.js"></script>
 	<script type="text/javascript" src="js/lib/d3.js"></script>
 	<script type="text/javascript" src="js/lib/c3.min.js"></script>
 	<script type="text/javascript" src="js/lib/nv.d3.min.js"></script>
 	<script type="text/javascript" src="js/lib/jquery-blink.js"></script>
+
+	<!--Embed map scripts-->
+	<script type="text/javascript" src="js/lib/ext-all.js"></script>
+	<script type="text/javascript" src="js/lib/table.js"></script>
+	<script type="text/javascript" src="js/custom/embedmap.js"></script>
 	<script>
 		window.dhis2 = window.dhis2 || {};
 		dhis2.settings = dhis2.settings || {};

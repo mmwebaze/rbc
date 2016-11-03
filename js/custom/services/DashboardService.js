@@ -12,7 +12,6 @@ ds.service('updateDashletService', function ($http) {
 });
 
 ds.service('dashletService', function ($http) {
-	console.debug('dashlets')
 	return {
 		getDashlets: function (baseURL, dashboard) {
 			//return $http.get(baseURL+'analytics.json?dimension=dx:' + dx + '&dimension=pe:'+pe+'&dimension=ou:'+ou+';');

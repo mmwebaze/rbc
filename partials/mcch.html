@@ -5,28 +5,45 @@
 			<div>
 				<ul class="nav nav-tabs">
 					<li ng-class="{active:isSelected(1)}">
-						<a href ng-click="selectTab(1)">MCCH System</a>
+						<a href ng-click="selectTab(1)">Home</a>
 					</li>
 					<li ng-class="{active:isSelected(2)}">
-						<a href ng-click="selectTab(2)">MCCH Inputs</a>
+						<a href ng-click="selectTab(2)">MCCH System</a>
 					</li>
 					<li ng-class="{active:isSelected(3)}">
-						<a href ng-click="selectTab(3)" data-toggle="tab">System Delivery</a>
+						<a href ng-click="selectTab(3)">MCCH Inputs</a>
 					</li>
 					<li ng-class="{active:isSelected(4)}">
-						<a href ng-click="selectTab(4)" data-toggle="tab">Coverage</a>
+						<a href ng-click="selectTab(4)" data-toggle="tab">System Delivery</a>
 					</li>
 					<li ng-class="{active:isSelected(5)}">
-						<a href ng-click="selectTab(5)" data-toggle="tab">Outcomes</a>
+						<a href ng-click="selectTab(5)" data-toggle="tab">Coverage</a>
+					</li>
+					<li ng-class="{active:isSelected(6)}">
+						<a href ng-click="selectTab(6)" data-toggle="tab">Outcomes</a>
 					</li>
 				</ul>
 			</div>
 
-			<div class="tab-pane" ng-show="isSelected(1)" ng-controller="mcchSystemCtrl">{{name}}</div>
-			<div class="tab-pane" ng-show="isSelected(2)">Taby</div>
-			<div class="tab-pane" ng-show="isSelected(3)">Sirabo</div>
-			<div class="tab-pane" ng-show="isSelected(4)">Hon</div>
-			<div class="tab-pane" ng-show="isSelected(5)">people</div>
+				<div style="height: 5px;"></div>
+				<div class="tab-pane" ng-show="isSelected(1)">
+					<div ng-include="'partials/mcch/mcch_home.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(2)">
+					<div ng-include="'partials/mcch/mcch_system.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(3)">
+					<div ng-include="'partials/mcch/mcch_inputs.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(4)">
+					<div ng-include="'partials/mcch/mcch_delivery.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(5)">
+					<div ng-include="'partials/mcch/mcch_coverage.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(6)">
+					<div ng-include="'partials/mcch/mcch_outcomes.html'"></div>
+				</div>
 
 		</div>
 	</div>

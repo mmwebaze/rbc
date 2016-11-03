@@ -35,17 +35,16 @@
 				controller: "malariaController"
 			})
 			.when("/mcch", {
-				templateUrl: "partials/mcch.html"
-					//controller : "nationalController"
-					//controller: "extJsController"
+				templateUrl: "partials/mcch.html",
+				controller : "mcchController"
 			})
 			.when("/mppd", {
-				templateUrl: "partials/mppd.html"
-					//controller : "districtController"
+				templateUrl: "partials/mppd.html",
+				controller : "mppdController"
 			})
 			.when("/tb", {
-				templateUrl: "partials/tb.html"
-					//controller : "districtController"
+				templateUrl: "partials/tb.html",
+				controller : "tbController"
 			})
 			.when("/visualizer", {
 				templateUrl: "partials/visualizer.html"
@@ -64,7 +63,7 @@
 				controller : "setupController"
 			})
 			.otherwise({
-				redirectTo: "national"
+				redirectTo: "malaria"
 			});
 	});
 
@@ -79,16 +78,33 @@
 			}
 		});
 	});
-	rbcapp.controller("dimensionController", function ($scope, dataElementService, periodService, orgUnitService) {
+	rbcapp.controller("dimensionController", function ($scope, dataElementService, periodService, orgUnitService, dataElementGroupsService) {
 		$scope.typeChart = 'bar';
-		$scope.selectedRadio = function (v) {
-			console.debug(v)
-			$scope.typeChart = v
+		$scope.selectedRadio = function (selectedChart) {
+			console.debug(selectedChart);
+			$scope.typeChart = selectedChart;
 		}
-		dataElementService.getDataElements(baseURL).get({}, function (allDataElements) {
+
+		dataElementGroupsService.getDataElementGroups(baseURL).get({}, function(allDataElementGroups){
+			$scope.dataElementGroups = allDataElementGroups.dataElementGroups;
+			$scope.selectedDataElementGroup = allDataElementGroups.dataElementGroups[0];
+		});
+
+		$scope.selectDataElementGroup = function(vt){
+			console.debug(vt);
+			dataElementGroupsService.getDataElementGroupElements(baseURL).get({deGrpId:vt}, function(grpDataElements){
+				$scope.dataElements = grpDataElements.dataElements;
+				//$scope.selectedDataElement = grpDataElements.dataElements[0];
+				$scope.selectedDataElement = [];
+			});
+		}
+
+		/*dataElementService.getDataElements(baseURL).get({}, function (allDataElements) {
 			$scope.dataElements = allDataElements.dataElements;
 			$scope.selectedDataElement = allDataElements.dataElements[0];
-		});
+		});*/
+
+		
 
 		var relativePeriods = periodService.getPeriods();
 		$scope.periods = relativePeriods.periods;
@@ -106,7 +122,6 @@
 
 		this.tab = 1;
 		$scope.selectTab = function (setTab) {
-			console.debug(setTab)
 			$( "#malaria_main" ).remove();
 			this.tab = setTab;
 		};

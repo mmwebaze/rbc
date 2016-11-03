@@ -20,6 +20,16 @@ rbcServices.service('dataElementService', function ($resource) {
 	}
 });
 
+rbcServices.service('dataElementGroupsService', function ($resource) {
+
+		this.getDataElementGroups = function (baseURL) {
+			return $resource(baseURL + 'dataElementGroups:deGrpId.json?paging=false', {});
+		}
+		this.getDataElementGroupElements = function(baseURL){
+			return $resource(baseURL + 'dataElementGroups/:deGrpId.json?fields=dataElements[id,displayName]&paging=false', {deGrpId: "@deGrpId"});
+		}
+});
+
 rbcServices.service('generateUidService', function ($resource) {
 	this.generateUid = function (baseURL) {
 		return $resource(baseURL + 'system/uid.json', {});
@@ -27,16 +37,18 @@ rbcServices.service('generateUidService', function ($resource) {
 });
 
 rbcServices.service('analyticService', function ($http) {
-	//return {
 	this.getAnalyticsData = function (baseURL, dx, pe, ou) {
 		console.debug(baseURL + 'analytics.json?dimension=dx:' + dx + '&dimension=pe:' + pe + '&dimension=ou:' + ou + ';');
 		return $http.get(baseURL + 'analytics.json?dimension=dx:' + dx + '&dimension=pe:' + pe + '&dimension=ou:' + ou + ';');
 	}
 
 	this.getAnalyticsLink = function (baseURL, dx, pe, ou) {
-			return baseURL + 'analytics.json?dimension=dx\\:' + dx + '&dimension=pe\\:' + pe + '&dimension=ou\\:' + ou
-		}
-		//}
+		//alert(dx)
+		var dxElement = replaceCommas(dx);
+		//alert(dxElement+' ***');
+
+			return baseURL + 'analytics.json?dimension=dx\\:' + dxElement + '&dimension=pe\\:' + pe + '&dimension=ou\\:' + ou
+	}
 });
 
 rbcServices.service('generateAnalyticService', function ($resource) {

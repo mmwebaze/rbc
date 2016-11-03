@@ -4,44 +4,44 @@
 			<div ng-controller="TabCtrl">
 				<div>
 					<ul class="nav nav-tabs">
-						<!-- <li ng-class="{active:isSelected(1)}">
-							<a href ng-click="selectTab(1)">Home</a>
-						</li> -->
 						<li ng-class="{active:isSelected(1)}">
-							<a href ng-click="selectTab(1)">mppd System</a>
+							<a href ng-click="selectTab(1)">Home</a>
 						</li>
 						<li ng-class="{active:isSelected(2)}">
-							<a href ng-click="selectTab(2)">mppd Inputs</a>
+							<a href ng-click="selectTab(2)">mppd System</a>
 						</li>
 						<li ng-class="{active:isSelected(3)}">
-							<a href ng-click="selectTab(3)" data-toggle="tab">System Delivery</a>
+							<a href ng-click="selectTab(3)">mppd Inputs</a>
 						</li>
 						<li ng-class="{active:isSelected(4)}">
-							<a href ng-click="selectTab(4)" data-toggle="tab">Coverage</a>
+							<a href ng-click="selectTab(4)" data-toggle="tab">System Delivery</a>
 						</li>
 						<li ng-class="{active:isSelected(5)}">
-							<a href ng-click="selectTab(5)" data-toggle="tab">Outcomes</a>
+							<a href ng-click="selectTab(5)" data-toggle="tab">Coverage</a>
+						</li>
+						<li ng-class="{active:isSelected(6)}">
+							<a href ng-click="selectTab(6)" data-toggle="tab">Outcomes</a>
 						</li>
 					</ul>
 				</div>
 				<div style="height: 5px;"></div>
-				<!-- <div class="tab-pane" ng-show="isSelected(1)">
-					<div ng-include="'partials/mppd_home.html'"></div>
-				</div> -->
 				<div class="tab-pane" ng-show="isSelected(1)">
-					<div ng-include="'partials/mppd_system.html'"></div>
+					<div ng-include="'partials/mppd/mppd_home.html'"></div>
 				</div>
 				<div class="tab-pane" ng-show="isSelected(2)">
-					<div ng-include="'partials/mppd_inputs.html'"></div>
+					<div ng-include="'partials/mppd/mppd_system.html'"></div>
 				</div>
 				<div class="tab-pane" ng-show="isSelected(3)">
-					<div ng-include="'partials/mppd_delivery.html'"></div>
+					<div ng-include="'partials/mppd/mppd_inputs.html'"></div>
 				</div>
 				<div class="tab-pane" ng-show="isSelected(4)">
-					<div ng-include="'partials/mppd_coverage.html'"></div>
+					<div ng-include="'partials/mppd/mppd_delivery.html'"></div>
 				</div>
 				<div class="tab-pane" ng-show="isSelected(5)">
-					<div ng-include="'partials/mppd_outcomes.html'"></div>
+					<div ng-include="'partials/mppd/mppd_coverage.html'"></div>
+				</div>
+				<div class="tab-pane" ng-show="isSelected(6)">
+					<div ng-include="'partials/mppd/mppd_outcomes.html'"></div>
 				</div>
 			</div>
 		</div>

@@ -3,7 +3,7 @@
 angular.module('tb.controllers', ['dashboard.services', 'rbc.services'])
 
 .controller("tbController", function ($scope) {
-	$scope.dashboard = "Main tb Landing page";
+	$scope.dashboard = "TB Dashboard";
 
 })
 

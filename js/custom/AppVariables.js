@@ -1,5 +1,7 @@
+//var baseURL = 'https://dhis2.jsi.com/dss/api/';
 var baseURL = 'http://localhost:8181/dhis/api/';
-var DASHBOARD_MAX = 4;
+var ALERT_DASHBOARD_MAX = 6;
+var DASHBOARD_MAX = 6;
 var newDashlet = {
 	"id": "",
 	"title": "",
