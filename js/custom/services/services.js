@@ -58,6 +58,13 @@ rbcServices.service('generateAnalyticService', function ($resource) {
 	}
 });
 
+rbcServices.service('generateReportTableService', function ($resource) {
+	this.getData = function (link) {
+		//console.debug(link);
+		return $resource(link, {});
+	}
+});
+
 rbcServices.factory('orgUnitService', function ($resource) {
 	return {
 		getOrgs: function (baseURL) {

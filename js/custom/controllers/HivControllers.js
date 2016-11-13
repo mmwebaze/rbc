@@ -29,4 +29,17 @@ angular.module('hiv.controllers', ['dashboard.services', 'rbc.services'])
 .controller("hivOutcomesCtrl", function ($scope) {
 	$scope.hivOutcomes = "hiv OUTCOMES";
 
+})
+.controller("HivTabCtrl", function ($scope) {
+
+	$scope.tab = 1;
+	$scope.selectTab = function (setTab) {
+		console.debug(setTab);
+			//$( "#malaria_main" ).remove();
+			this.tab = setTab;
+		};
+		$scope.isSelected = function (checkTab) {
+
+			return this.tab === checkTab;
+		}
 });

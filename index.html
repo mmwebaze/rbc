@@ -20,7 +20,8 @@
 	<link type="text/css" rel="stylesheet" media="screen" href="../../../dhis-web-commons/css/menu.css" />
 
 	<!-- Embed map stylesheet -->
-	<link type="text/css" rel="stylesheet" href="css/ext-all-gray.css" />
+	<!-- <link type="text/css" rel="stylesheet" href="css/ext-all-gray.css" /> -->
+	<link rel="stylesheet" type="text/css" href="http://dhis2-cdn.org/v215/ext/resources/css/ext-plugin-gray.css" />
 
 </head>
 
@@ -70,7 +71,11 @@
 	<script type="text/javascript" src="js/lib/jquery-blink.js"></script>
 
 	<!--Embed map scripts-->
-	<script type="text/javascript" src="js/lib/ext-all.js"></script>
+	<!-- <script type="text/javascript" src="js/lib/ext-all.js"></script> -->
+	<script src="http://dhis2-cdn.org/v215/ext/ext-all.js"></script>
+	<!-- <script src="https://maps.google.com/maps/api/js?sensor=false"></script> -->
+	<script src="http://dhis2-cdn.org/v215/openlayers/OpenLayers.js"></script>
+	<script src="http://dhis2-cdn.org/v215/plugin/map.js"></script>
 	<script type="text/javascript" src="js/lib/table.js"></script>
 	<script type="text/javascript" src="js/custom/embedmap.js"></script>
 	<script>
@@ -87,6 +92,7 @@
 	<!-- RBC Dashboard Custom scripts -->
 	<script type="text/javascript" src="js/custom/AppVariables.js"></script>
 	<script type="text/javascript" src="js/custom/utils/utils.js"></script>
+	<script type="text/javascript" src="js/custom/utils/rbctooltip.js"></script>
 	<script type="text/javascript" src="js/custom/charts/bulletChart.js"></script>
 	<script type="text/javascript" src="js/custom/services/services.js"></script>
 	<script type="text/javascript" src="js/custom/services/PeriodServices.js"></script>

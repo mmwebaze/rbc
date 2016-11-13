@@ -1,6 +1,6 @@
 angular.module('explore.controllers', ['explore.services', 'rbc.services'])
 
-.controller('exploreController', function ($scope, $routeParams, exploreService, generateAnalyticService) {
+.controller('exploreController', function ($scope, $routeParams, exploreService, generateReportTableService) {
 	$scope.uidSelected = $routeParams.dashletId;
 	var dashboardSelected = $routeParams.dashboard;
 	var chartType = $routeParams.chartType;
@@ -8,16 +8,18 @@ angular.module('explore.controllers', ['explore.services', 'rbc.services'])
 	exploreService.getDashlets(baseURL).get({
 		dashboard: dashboardSelected
 	}, function (dashlets) {
-		generateAnalyticService.getData(getAnalyticLink($routeParams.dashletId, dashlets.dashlets)).get({}, function (data) {
+		//generateAnalyticService.getData(getAnalyticLink($routeParams.dashletId, dashlets.dashlets)).get({}, function (data) {
+			generateReportTableService.getData('http://localhost:8181/dhis/api/reportTables/DHyPchxCX7j/data.json').get({}, function (data) {
 
 			//var dataRows = manipulateData(sampleAnalyticData.metaData, sampleAnalyticData.rows);
-			var dataRows = manipulateData(data.metaData.names, data.rows);
+			var dataRows = parseReportTable(data.rows, data.headers);
+			console.debug(dataRows);
 
 			switch(chartType){
 				case 'bar':
 				//generateBar(0, dataRows);
-				var dataRows = manipulateData(data.metaData.names, data.rows);
-				generateBar(0/*, dataRows*/);
+				//var dataRows = manipulateData(data.metaData.names, data.rows);
+				generateBar(0, dataRows);
 				break;
 				case 'tacho':
 				generateGauge(0);
@@ -32,7 +34,10 @@ angular.module('explore.controllers', ['explore.services', 'rbc.services'])
 				generateStackedBar(0)
 				break;
 				case 'pivot':
-				embedPivotTable(0);
+				//embedPivotTable(0);
+				//embedHtmlTable(0);
+				generateTable(0, dataRows);
+				
 				break;
 			}
 			

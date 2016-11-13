@@ -1,26 +1,26 @@
 	<div class="container">
 		<div class="container-fluid">
-			<div ng-include="'partials/alerts.html'"></div>
+			<div ng-include="'partials/malaria/alerts.html'"></div>
 			<div ng-controller="MalariaTabCtrl">
 				<div>
 					<ul class="nav nav-tabs">
-						<li ng-class="{active:isSelected(1)}">
+						<li ng-class="{active:isSelected(1)}" data-toggle="tab" title="Malaria Home Summary">
 							<a href ng-click="selectTab(1)">Home</a>
 						</li>
-						<li ng-class="{active:isSelected(2)}">
+						<li ng-class="{active:isSelected(2)}" data-toggle="tab" title="Malaria System Summary">
 							<a href ng-click="selectTab(2)">Malaria System</a>
 						</li>
-						<li ng-class="{active:isSelected(3)}">
+						<li ng-class="{active:isSelected(3)}" data-toggle="tab" title="Malaria Inputs Summary">
 							<a href ng-click="selectTab(3)">Malaria Inputs</a>
 						</li>
-						<li ng-class="{active:isSelected(4)}">
-							<a href ng-click="selectTab(4)" data-toggle="tab">System Delivery</a>
+						<li ng-class="{active:isSelected(4)}" data-toggle="tab" title="Malaria Delivery Summary">
+							<a href ng-click="selectTab(4)">System Delivery</a>
 						</li>
-						<li ng-class="{active:isSelected(5)}">
-							<a href ng-click="selectTab(5)" data-toggle="tab">Coverage</a>
+						<li ng-class="{active:isSelected(5)}" data-toggle="tab" title="Malaria Coverage Summary">
+							<a href ng-click="selectTab(5)">Coverage</a>
 						</li>
-						<li ng-class="{active:isSelected(6)}">
-							<a href ng-click="selectTab(6)" data-toggle="tab">Outcomes</a>
+						<li ng-class="{active:isSelected(6)}" data-toggle="tab" title="Malaria Outcomes Summary">
+							<a href ng-click="selectTab(6)">Outcomes</a>
 						</li>
 					</ul>
 				</div>

@@ -43,6 +43,34 @@ function dashboardRows(numberDashlets) {
 	}
 }
 
+function parseReportTable(rows, headers){
+	var waarde = [];
+
+	for (var k = 7; k < headers.length; k++){
+		var namen = [];
+		namen.push(headers[k]['name']);
+		waarde.push(namen);
+	}
+
+	var columns = [];
+	var orgUnits = ['x'];
+
+	for (var i =0; i < rows.length; i++){
+		
+		orgUnits.push(rows[i][1]);
+
+		for (var k = 0; k < waarde.length; k++){
+			waarde[k].push(rows[i][7 + k]);
+		}
+	}
+	columns.push(orgUnits);
+	for (var k = 0; k < waarde.length; k++){
+			columns.push(waarde[k]);
+	}
+	
+	return columns;
+}
+
 function manipulateData(metaDataNames, rows) {
 	var dataRow = [];
 	for (var row = 0; row < rows.length; row++) {
@@ -74,11 +102,29 @@ function setExploreSize(id){
 
 	if (id == 0) {
 		chartDim.height = chartDim.height * 2;
-		chartDim.width = chartDim.width * 2;
+		chartDim.width = chartDim.width * 5;
 	}
 
 	return chartDim;
 }
+
+function generateTable(id, data){
+	var binto = '#graphx' + id;
+	var table = '<table class="table table-bordered table-striped">'
+	for (var i = 0; i < data[0].length; i++){
+		var rowBegin = '<tr>';
+		var colR = '';
+		for (var k = 0; k < data.length; k++){
+			colR = colR+'<td>'+data[k][i]+'</td>';
+		}
+		rowBegin = rowBegin+colR+'</tr>';
+		table = table+rowBegin;
+
+	}
+	table = table+'</table>'
+    $(binto).append(table);
+}
+
 function generateLine(id) {
 	var DimChart = setExploreSize(id)
 	
@@ -185,7 +231,7 @@ function generateGauge(id) {
 	})
 }
 
-function generateBar(id/*, dataRows*/) {
+function generateBar(id, dataRows) {
 	var DimChart = setExploreSize(id);
 
 	var chart = c3.generate({
@@ -195,28 +241,29 @@ function generateBar(id/*, dataRows*/) {
 			width: DimChart.width
 		},
 		data: {
-			//x: 'x',
-			//columns: dataRows
-			columns: [
+			x: 'x',
+			columns: dataRows,
+			/*columns: [
 			['Births', 30, 200, 100, 400, 150, 250],
 			['BCG', 130, 100, 140, 200, 150, 50]
-			]
-			,
+			]*/
+			
 			type: 'bar'
 		},
-		/*axis: {
+		axis: {
 			x: {
 				type: 'category'
 
 			}
-		},*/
+		},
 		bar: {
-			width: {
-				ratio: 0.5 // this makes bar width 50% of length between ticks
-			}
+			width: {ratio: 0.5},
 			// or
 			//width: 100 // this makes bar width 100px
-		}
+		},
+		legend: {
+        	show: true
+    	}
 	});
 }
 
@@ -263,13 +310,24 @@ function embedPivotTable(id){
 		});
 	});
 }
+/*Embeds DHIS2 generated GIS map into custom dashboard*/
+function embedGisMap(id){
+	Ext.onReady(function() {
+
+		DHIS.getMap({
+			"url": 'http://localhost:8181/dhis/',
+			"el": "graphx"+id,
+			"id": "qNJbH7bqRts",
+		});
+
+	});
+}
 
 /*Replaces commas found in multiple selected data elements*/
 function replaceCommas(dx){
 	var dxString = dx.toString();
 	var replaceWith = ";"
 	dxString = dxString.replace(/,/g, replaceWith)
-	alert(dxString+' ***')
 	return dxString;
 }
 
@@ -283,3 +341,45 @@ function getAnalyticLink(dashletUid, dashlets) {
 		}
 	}
 }
+
+function getDataHtmlTable(){
+	var header = Array();
+
+	$("table thead tr th").each(function(i, v){
+		header[i] = $(this).text();
+	})
+
+	alert(header);
+
+	var data = Array();
+
+	$("table tbody tr").each(function(i, v){
+		data[i] = Array();
+		$(this).children('td').each(function(ii, vv){
+			data[i][ii] = $(this).text();
+		}); 
+	})
+
+	alert(data);
+}
+
+function embedHtmlTable(id){
+	
+	/*$( "#graphx"+id ).load( "http://localhost:8181/dhis/api/reportTables/DHyPchxCX7j/data.html .gridDiv", function(){
+		
+		$(".gridDiv" ).on();
+		//getDataHtmlTable();
+		console.debug("***")
+		//$("table").addClass("table-bordered");
+
+	} );*/
+	$.get("http://localhost:8181/dhis/api/reportTables/DHyPchxCX7j/data.html", function(data, status){
+		$( "#graphx"+id ).html($(data).find('div .gridDiv').html());
+		getDataHtmlTable();
+        //alert("Data: " + data + "\nStatus: " + status);
+    });
+
+}
+
+
+

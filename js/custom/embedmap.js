@@ -1,10 +1,10 @@
-Ext.onReady(function() {
+	Ext.onReady(function() {
 
-	DHIS.getTable({
-		url: 'http://localhost:8181/dhis/',
-		el: "table1",
-		"id": "T9cw92kNiDI",
-		fontSize: "large",
-		legendSet: {id: "s50spdzKeSU"}
+		DHIS.getMap({
+			"url": 'http://localhost:8181/dhis/',
+			"el": "graphx0",
+			"id": "qNJbH7bqRts",
+			"legendSet":"LrxfadsFqch"
+		});
+
 	});
-});

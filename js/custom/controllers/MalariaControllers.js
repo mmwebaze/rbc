@@ -33,7 +33,7 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 
 			var generateAnalytics = function (link, title, uid, chartType, d) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					$('#row' + rowCount).append('<div class="col-md-4 col-sm-4 col-xs-12"><div class="x_panel"><div class="x_title"><small>' + title + '</small><ul class="nav navbar-right panel_toolbox"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-caret-square-o-down"></i></a> <ul class="dropdown-menu" role="menu"><li><a href="#/explore/MALARIA_SYSTEM/' + uid + '/' + chartType + '" target="_blank">Explore</a></li></ul></li></ul><div class="clearfix"></div></div><div class="x_content" style="overflow-y: scroll; max-height: 275px;"><div id=graphx' + uid + ' style="width:400px;"></div></div></div></div>');
+					$('#row' + rowCount).append('<div class="col-md-4 col-sm-4 col-xs-12"><div class="x_panel"><div class="x_title"><small>' + title + '</small><ul class="nav navbar-right panel_toolbox"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-caret-square-o-down"></i></a> <ul class="dropdown-menu" role="menu"><li><a href="#/explore/MALARIA_SYSTEM/' + uid + '/' + chartType + '">Explore</a></li></ul></li></ul><div class="clearfix"></div></div><div class="x_content" style="overflow-x: auto; overflow-y: auto; max-height: 275px;"><div id=graphx' + uid + ' style="width:400px;"></div></div></div></div>');
 					
 					switch(chartType){
 						case 'bar':
@@ -102,4 +102,4 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 
 			return this.tab === checkTab;
 		}
-	});
+});
