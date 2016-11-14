@@ -267,6 +267,41 @@ function generateBar(id, dataRows) {
 	});
 }
 
+//To be removed
+function generateBarDemo(id) {
+	var DimChart = setExploreSize(id);
+
+	var chart = c3.generate({
+		bindto: '#graphx' + id,
+		size: {
+			height: DimChart.height,
+			width: DimChart.width
+		},
+		data: {
+			columns: [
+			['Births', 30, 200, 100, 400, 150, 250],
+			['BCG', 130, 100, 140, 200, 150, 50]
+			],
+			
+			type: 'bar'
+		}/*,
+		axis: {
+			x: {
+				type: 'category'
+
+			}
+		}*/,
+		bar: {
+			width: {ratio: 0.5},
+			// or
+			//width: 100 // this makes bar width 100px
+		},
+		legend: {
+			show: true
+		}
+	});
+}
+
 function generateStackedBar(id) {
 	var DimChart = setExploreSize(id);
 
@@ -387,8 +422,9 @@ function generateDashlets(addRowId, rowDomain, rowCount, dashletCount, data, tit
 	switch(chartType){
 		case 'bar':
 						//generateBar(0, dataRows);
-			var dataRows = manipulateData(data.metaData.names, data.rows);
-			generateBar(uid/*, dataRows*/);
+			//var dataRows = manipulateData(data.metaData.names, data.rows);
+			//generateBar(uid/*, dataRows*/);
+			generateBarDemo(uid);
 			break;
 		case 'tacho':
 			generateGauge(uid);
