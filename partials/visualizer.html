@@ -31,13 +31,18 @@
 				</select>
 			</div>
 			<div class="row row-buffer"></div>
+			<div class="row label-space-1"><span class="label label-info">Organisation Unit Levels</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedLevel.level" ng-options="ouLvl.level as ouLvl.displayName for ouLvl in orgLevels"></select>
+			</div>
+			<!-- <div class="row row-buffer"></div>
 			<div class="row label-space-1"><span class="label label-info">Organisation Unit</span></div>
 			<div class="row">
 				<select class="form-control" ng-model="selectedOrgUnit.id" ng-options="ou.id as ou.displayName for ou in orgUnits"></select>
-			</div>
-			<div class="row row-buffer">
+			</div> -->
+			<!-- <div class="row row-buffer">
 				<button id="createChart" type="button" class="btn btn-primary" ng-click="createChart(selectedDataElement.id, selectedPeriod.id, selectedOrgUnit.id)">Create Chart</button>
-			</div>
+			</div> -->
 		</div>
 		<div class="col-sm-10">
 
@@ -54,7 +59,7 @@
 				</div>
 				<div class="col-sm-2">
 					<div ng-controller="SaveChartController">
-						<button id="saveChart" type="button" class="btn btn-primary" ng-click="saveChart(typeChart, chartTitle, defaultDashboard, selectedDataElement.id, selectedPeriod.id, selectedOrgUnit.id)">Save</button>
+						<button id="saveChart" type="button" class="btn btn-primary" ng-click="saveChart(typeChart, chartTitle, defaultDashboard, selectedDataElement.id, selectedPeriod.id, selectedLevel.level)">Save</button>
 					</div>
 				</div>
 			</div>

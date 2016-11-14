@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 angular.module('dashboard.controllers', ['dashboard.services', 'rbc.services']).
 
@@ -53,4 +53,4 @@ controller("dashboardController", function ($scope, dashboardService, generateAn
 			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
 		}
 	});
-})
+})*/

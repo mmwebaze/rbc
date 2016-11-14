@@ -30,22 +30,35 @@
 						<div ng-include="'partials/malaria/malaria_home.html'"></div>
 					</div>
 					<div class="tab-pane" ng-show="isSelected(2)">
-						<div ng-include="'partials/malaria/malaria_system.html'"></div>
+						<!-- <div ng-include="'partials/malaria/malaria_system.html'"></div> -->
+						<div ng-controller="malariaSystemCtrl">
+							<div id="dashMalariaSystem" class="row"></div>
+						</div>
 					</div>
 					<div class="tab-pane" ng-show="isSelected(3)">
-						<div ng-include="'partials/malaria/malaria_inputs.html'"></div>
+						<!-- <div ng-include="'partials/malaria/malaria_inputs.html'"></div> -->
+						<div ng-controller="malariaInputsCtrl">
+							<div id="dashMalariaInputs" class="row"></div>
+						</div>
 					</div>
 					<div class="tab-pane" ng-show="isSelected(4)">
-						<div ng-include="'partials/malaria/malaria_delivery.html'"></div>
+						<!-- <div ng-include="'partials/malaria/malaria_delivery.html'"></div> -->
+						<div ng-controller="malariaServDlvryCtrl">
+							<div id="dashMalariaDelivery" class="row"></div>
+						</div>
 					</div>
 					<div class="tab-pane" ng-show="isSelected(5)">
-						<div ng-include="'partials/malaria/malaria_coverage.html'"></div>
+						<!-- <div ng-include="'partials/malaria/malaria_coverage.html'"></div> -->
+						<div ng-controller="malariaCoverageCtrl">
+							<div id="dashMalariaCoverage" class="row"></div>
+						</div>
 					</div>
 					<div class="tab-pane" ng-show="isSelected(6)">
-						<div ng-include="'partials/malaria/malaria_outcomes.html'"></div>
+						<!-- <div ng-include="'partials/malaria/malaria_outcomes.html'"></div> -->
+						<div ng-controller="malariaOutcomesCtrl">
+							<div id="dashMalariaOutcomes" class="row"></div>
+						</div>
 					</div>
-				
-				
 			</div>
 		</div>
 	</div>

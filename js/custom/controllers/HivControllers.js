@@ -7,35 +7,163 @@ angular.module('hiv.controllers', ['dashboard.services', 'rbc.services'])
 
 })
 
-.controller("hivSystemCtrl", function ($scope) {
-	$scope.hivsystem = "hiv System";
+.controller("hivSystemCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	dashboardService.getDashboards(baseURL).get({dashboard: 'HIV_SYSTEM'}, function (dashboardDashlets) {
+		//
+		var numberDashlets = dashboardDashlets.dashlets.length;
+		var rows = dashboardRows(numberDashlets);
+		var dashletCount = 0;
+		var rowCount = 0;
+		var dashlets = dashboardDashlets.dashlets;
+
+		var rowAddHivSystem = $('#dashHivSystem').append('<div id=hivSysRow' + rowCount + ' class=row></div>');
+		for (var d = 0; d < numberDashlets; d++) {
+			dashletCount = dashletCount + 1;
+			var analyticLink = dashlets[d].link;
+			var chartTitle = dashlets[d].title;
+			var typeOfChart = dashlets[d].chartType;
+			var dashletUid = dashlets[d].id;
+
+			var generateAnalytics = function (link, title, uid, chartType, d) {
+				var mData = generateAnalyticService.getData(link).get({}, function (data) {
+					generateDashlets(rowAddHivSystem, 'hivSysRow', rowCount, dashletCount, data, title, uid, chartType, d);
+				});
+
+			}
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+		}
+	});
+})
+
+.controller("hivInputsCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	dashboardService.getDashboards(baseURL).get({dashboard: 'HIV_INPUTS'}, function (dashboardDashlets) {
+		//
+		var numberDashlets = dashboardDashlets.dashlets.length;
+		var rows = dashboardRows(numberDashlets);
+		var dashletCount = 0;
+		var rowCount = 0;
+		var dashlets = dashboardDashlets.dashlets;
+
+		var rowHivInput = $('#dashHivInputs').append('<div id=hivInputsRow' + rowCount + ' class=row></div>');
+		for (var d = 0; d < numberDashlets; d++) {
+			dashletCount = dashletCount + 1;
+			var analyticLink = dashlets[d].link;
+			var chartTitle = dashlets[d].title;
+			var typeOfChart = dashlets[d].chartType;
+			var dashletUid = dashlets[d].id;
+
+			var generateAnalytics = function (link, title, uid, chartType, d) {
+				var mData = generateAnalyticService.getData(link).get({}, function (data) {
+					generateDashlets(rowHivInput, 'hivInputsRow', rowCount, dashletCount, data, title, uid, chartType, d);
+				});
+
+			}
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+		}
+	});
 
 })
 
-.controller("hivInputsCtrl", function ($scope) {
-	$scope.hivInput = "hiv INPUTS";
+.controller("hivServDlvryCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	dashboardService.getDashboards(baseURL).get({
+		dashboard: 'HIV_SERVICE_DELIVERY'
+	}, function (dashboardDashlets) {
+		//
+		var numberDashlets = dashboardDashlets.dashlets.length;
+		var rows = dashboardRows(numberDashlets);
+		var dashletCount = 0;
+		var rowCount = 0;
+		var dashlets = dashboardDashlets.dashlets;
+
+		var rowHivDlvy = $('#dashHivDelivery').append('<div id=hivDlvyRow' + rowCount + ' class=row></div>');
+		for (var d = 0; d < numberDashlets; d++) {
+			dashletCount = dashletCount + 1;
+			var analyticLink = dashlets[d].link;
+			var chartTitle = dashlets[d].title;
+			var typeOfChart = dashlets[d].chartType;
+			var dashletUid = dashlets[d].id;
+
+			var generateAnalytics = function (link, title, uid, chartType, d) {
+				var mData = generateAnalyticService.getData(link).get({}, function (data) {
+					generateDashlets(rowHivDlvy, 'hivDlvyRow', rowCount, dashletCount, data, title, uid, chartType, d);
+				});
+
+			}
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+		}
+	});
 
 })
 
-.controller("hivServDlvryCtrl", function ($scope) {
-	$scope.hivSrvDlvy = "hiv SERVICE DELIVERY";
+.controller("hivCoverageCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	//alert('****HIV COVERAGE')
+	//
+	dashboardService.getDashboards(baseURL).get({dashboard : 'HIV_COVERAGE'}, function (dashboardDashlets) {
+		//
+		var numberDashlets = dashboardDashlets.dashlets.length;
+		//console.debug(numberDashlets+" ***************************************")
+		//$('#dashHivCoverage').append('**** HIV Coverage number of dashlets'+numberDashlets)
+		var rows = dashboardRows(numberDashlets);
+		var dashletCount = 0;
+		var rowCount = 0;
+		var dashlets = dashboardDashlets.dashlets;
+
+		var rowAddHivCoverage = $('#dashHivCoverage').append('<div id=hivCoverageRow' + rowCount + ' class=row></div>');
+		for (var d = 0; d < numberDashlets; d++) {
+			dashletCount = dashletCount + 1;
+			var analyticLink = dashlets[d].link;
+			var chartTitle = dashlets[d].title;
+			var typeOfChart = dashlets[d].chartType;
+			var dashletUid = dashlets[d].id;
+
+			var generateAnalytics = function (link, title, uid, chartType, d) {
+				var mData = generateAnalyticService.getData(link).get({}, function (data) {
+					generateDashlets(rowAddHivCoverage, 'hivCoverageRow', rowCount, dashletCount, data, title, uid, chartType, d);
+				});
+
+			}
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+		}
+	});
+
+})
+.controller("hivOutcomesCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	dashboardService.getDashboards(baseURL).get({
+		dashboard: 'HIV_OUTCOMES'
+	}, function (dashboardDashlets) {
+		//
+		var numberDashlets = dashboardDashlets.dashlets.length;
+		var rows = dashboardRows(numberDashlets);
+		var dashletCount = 0;
+		var rowCount = 0;
+		var dashlets = dashboardDashlets.dashlets;
+
+		var rowHivOutcomes = $('#dashHivOutcomes').append('<div id=hivOutcomesRow' + rowCount + ' class=row></div>');
+		for (var d = 0; d < numberDashlets; d++) {
+			dashletCount = dashletCount + 1;
+			var analyticLink = dashlets[d].link;
+			var chartTitle = dashlets[d].title;
+			var typeOfChart = dashlets[d].chartType;
+			var dashletUid = dashlets[d].id;
+
+			var generateAnalytics = function (link, title, uid, chartType, d) {
+				var mData = generateAnalyticService.getData(link).get({}, function (data) {
+					generateDashlets(rowHivOutcomes,'hivOutcomesRow', rowCount, dashletCount, data, title, uid, chartType, d);
+				});
+
+			}
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+		}
+	});
 
 })
 
-.controller("hivCoverageCtrl", function ($scope) {
-	$scope.hivCoverage = "hiv COVERAGE";
-
-})
-.controller("hivOutcomesCtrl", function ($scope) {
-	$scope.hivOutcomes = "hiv OUTCOMES";
-
-})
 .controller("HivTabCtrl", function ($scope) {
 
 	$scope.tab = 1;
 	$scope.selectTab = function (setTab) {
 		console.debug(setTab);
-			//$( "#malaria_main" ).remove();
+			//$( "#HIV_main" ).remove();
 			this.tab = setTab;
 		};
 		$scope.isSelected = function (checkTab) {

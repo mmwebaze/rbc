@@ -21,11 +21,14 @@ ds.service('dashletService', function ($http) {
 });
 
 ds.service('dashboardService', function ($resource) {
-	return {
+	this.getDashboards = function(baseURL){
+		return $resource(baseURL + 'dataStore/rbcdashboard/:dashboard', {dashboard: '@dashboard'});
+	}
+	/*return {
 		getDashboards: function (baseURL) {
 			return $resource(baseURL + 'dataStore/rbcdashboard/:dashboard', {
 				dashboard: '@dashboard'
 			});
 		}
-	}
+	}*/
 });

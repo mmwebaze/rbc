@@ -30,6 +30,19 @@ rbcServices.service('dataElementGroupsService', function ($resource) {
 		}
 });
 
+rbcServices.service('orgUnitLevelService', function ($resource) {
+
+		this.getOrgUnitLevels = function (baseURL) {
+			return $resource(baseURL + 'organisationUnitLevels.json?fields=level,id,displayName&paging=false', {});
+		}
+});
+
+rbcServices.service('getOrgUnitsByLevelService', function ($http) {
+	this.getLevelOrgUnits = function(baseURL, level){
+			return $$http.get(baseURL + 'organisationUnits.json?filter=level:eq:'+level+'fields=id,displayName&paging=false');
+	}
+});
+
 rbcServices.service('generateUidService', function ($resource) {
 	this.generateUid = function (baseURL) {
 		return $resource(baseURL + 'system/uid.json', {});
@@ -47,7 +60,8 @@ rbcServices.service('analyticService', function ($http) {
 		var dxElement = replaceCommas(dx);
 		//alert(dxElement+' ***');
 
-			return baseURL + 'analytics.json?dimension=dx\\:' + dxElement + '&dimension=pe\\:' + pe + '&dimension=ou\\:' + ou
+			//return baseURL + 'analytics.json?dimension=dx\\:' + dxElement + '&dimension=pe\\:' + pe + '&dimension=ou\\:' + ou
+		return baseURL + 'analytics.json?dimension=dx\\:' + dxElement + '&dimension=pe\\:' + pe + '&filter=ou\\:LEVEL-' + ou
 	}
 });
 
