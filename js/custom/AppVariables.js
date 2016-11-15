@@ -2,6 +2,7 @@
 var baseURL = 'http://localhost:8181/dhis/api/';
 var ALERT_DASHBOARD_MAX = 6;
 var DASHBOARD_MAX = 6;
+var analyticsConfigurations = '&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
 var newDashlet = {
 	"id": "",
 	"title": "",
@@ -43,57 +44,11 @@ var default_dashboards = [
 "TB_SYSTEM"
 ];
 
-var sampleAnalyticData = {
-	"metaData": {
-		"names": {
-			"2014Q1": "Jan to Mar 2014",
-			"2014Q2": "Apr to Jun 2014",
-			"FbKK4ofIv5R": "Measles Coverage <1 y",
-			"ImspTQPwCqd": "Sierra Leone",
-			"eTDtyyaSA7f": "Fully Immunized Coverage"
-		}
-	},
-	"rows": [
-		[
-			"eTDtyyaSA7f",
-			"2014Q2",
-			"81.1"
-		],
-		[
-			"eTDtyyaSA7f",
-			"2014Q1",
-			"74.7"
-		],
-		[
-			"FbKK4ofIv5R",
-			"2014Q2",
-			"88.9"
-		],
-		[
-			"FbKK4ofIv5R",
-			"2014Q1",
-			"84.0"
-		],
-		[
-			"eTDtyyaSA7f",
-			"2014Q1",
-			"22.7"
-		],
-		[
-			"eTDtyyaSA7f765tg",
-			"2014Q1",
-			"100"
-		],
-		[
-			"Time3145",
-			"2014Q1",
-			"75"
-		],
-		[
-			"Time3145",
-			"2014Q1",
-			"39"
-		]
-	]
-};
-//81.1, 74.7 and 88.9 and 84.0
+var default_alert_dataStore = 'rbcalerts'
+var default_alert_dashboards = [
+"HIV",
+"MALARIA",
+"MCCH",
+"MPPD",
+"TB"
+];

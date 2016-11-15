@@ -42,21 +42,37 @@ function dashboardRows(numberDashlets) {
 		return rows + 1;
 	}
 }
+function parseTableLayout(data){
+	var dx = data.metaData.dx;
+	var dataRows = data.rows;
+	var pe = data.metaData.pe;
+	var xAxis = ['x']
+	var waarde = [];
+	var columns = [];
+	for (var k = 0; k < dx.length; k++){
+		var namen = [];
+		namen.push(dx[k]);
+		waarde.push(namen);
+	}
+	for (var i =0; i < dataRows.length; i++){
 
+		for(var k = 0; k < waarde.length; k++){
+			waarde[k].push(dataRows[i][4 + k])
+		}
+	}	
+	columns.push(xAxis.concat(pe))
+	return columns.concat(waarde)
+}
 function parseReportTable(rows, headers){
 	var waarde = [];
-
 	for (var k = 7; k < headers.length; k++){
 		var namen = [];
 		namen.push(headers[k]['name']);
 		waarde.push(namen);
 	}
-
 	var columns = [];
 	var orgUnits = ['x'];
-
 	for (var i =0; i < rows.length; i++){
-		
 		orgUnits.push(rows[i][1]);
 
 		for (var k = 0; k < waarde.length; k++){
@@ -125,7 +141,7 @@ function generateTable(id, data){
 	$(binto).append(table);
 }
 
-function generateLine(id) {
+function generateLine(id, data) {
 	var DimChart = setExploreSize(id)
 	
 	var chart = c3.generate({
@@ -136,18 +152,15 @@ function generateLine(id) {
 		},
 		data: {
 			x: 'x',
-			columns: [
-			['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-			['data1', 30, 200, 100, 400, 150, 250],
-			['data2', 130, 100, 140, 200, 150, 50]
-			],
+			xFormat: '%Y',
+			columns: data,
 			type: 'spline'
 		},
 		axis: {
 			x: {
 				type: 'timeseries',
 				tick: {
-					format: '%Y-%m-%d'
+					format: '%Y'
 				}
 			}
 		},
@@ -166,7 +179,7 @@ function generateLine(id) {
 	});
 }
 
-function generatePichart(id) {
+function generatePichart(id, data, title) {
 	var DimChart = setExploreSize(id);
 
 	var chart = c3.generate({
@@ -176,10 +189,10 @@ function generatePichart(id) {
 			width: DimChart.width
 		},
 		data: {
-			columns: [
+			columns: data,/*[
 			['data1', 30],
 			['data2', 120],
-			],
+			]*/
 			type: 'donut',
 			onclick: function (d, i) {
 				console.log("onclick", d, i);
@@ -192,7 +205,7 @@ function generatePichart(id) {
 			}
 		},
 		donut: {
-			title: "%TB Patients"
+			title: title
 		}
 	});
 }
@@ -243,10 +256,6 @@ function generateBar(id, dataRows) {
 		data: {
 			x: 'x',
 			columns: dataRows,
-			/*columns: [
-			['Births', 30, 200, 100, 400, 150, 250],
-			['BCG', 130, 100, 140, 200, 150, 50]
-			]*/
 			
 			type: 'bar'
 		},
@@ -417,23 +426,27 @@ function embedHtmlTable(id){
 }
 
 function generateDashlets(addRowId, rowDomain, rowCount, dashletCount, data, title, uid, chartType, d){
+	var dataRows = parseTableLayout(data);
+	console.debug(dataRows)
 	$('#'+rowDomain+'' + rowCount).append('<div class="col-md-4 col-sm-4 col-xs-12"><div class="x_panel"><div class="x_title"><small>' + title + '</small><ul class="nav navbar-right panel_toolbox"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-caret-square-o-down"></i></a> <ul class="dropdown-menu" role="menu"><li><a href="#/explore/MALARIA_SYSTEM/' + uid + '/' + chartType + '">Explore</a></li></ul></li></ul><div class="clearfix"></div></div><div class="x_content" style="overflow-x: auto; overflow-y: auto; max-height: 275px;"><div id=graphx' + uid + ' style="width:400px;"></div></div></div></div>');
 
 	switch(chartType){
 		case 'bar':
 						//generateBar(0, dataRows);
 			//var dataRows = manipulateData(data.metaData.names, data.rows);
-			//generateBar(uid/*, dataRows*/);
-			generateBarDemo(uid);
+			generateBar(uid, dataRows);
+			//generateBarDemo(uid);
 			break;
 		case 'tacho':
 			generateGauge(uid);
 			break;
 		case 'pie':
-			generatePichart(uid)
+			dataRows.splice(0,1)
+			console.debug(dataRows)
+			generatePichart(uid, dataRows, title)
 			break;
 		case 'line':
-			generateLine(uid)
+			generateLine(uid, dataRows)
 			break;
 		case 'stacked':
 			generateStackedBar(uid)
