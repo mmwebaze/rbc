@@ -26,8 +26,8 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 		var rowMalariaSys = $('#dashMalariaSystem').append('<div id=malarisSysRow' + rowCount + ' class=row></div>');
 		for (var d = 0; d < numberDashlets; d++) {
 			dashletCount = dashletCount + 1;
-			var analyticLink = dashlets[d].link+analyticsConfigurations;
-			//var analyticLink = 'http://localhost:8181/dhis/api/analytics.json?dimension=pe\\:LAST_5_YEARS&dimension=dx\\:y0B9TaG5LG7;OClx1UoIvix&filter=ou\\:LEVEL-1&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
+			//var analyticLink = dashlets[d].link+analyticsConfigurations;
+			var analyticLink = 'http://localhost:8181/dhis/api/analytics.json?dimension=pe\\:LAST_5_YEARS&dimension=dx\\:y0B9TaG5LG7;OClx1UoIvix&filter=ou\\:LEVEL-1&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
 			var chartTitle = dashlets[d].title;
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;

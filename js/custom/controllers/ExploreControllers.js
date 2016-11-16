@@ -36,6 +36,7 @@ angular.module('explore.controllers', ['explore.services', 'rbc.services'])
 				case 'pivot':
 				//embedPivotTable(0);
 				//embedHtmlTable(0);
+				
 				generateTable(0, dataRows);
 				
 				break;

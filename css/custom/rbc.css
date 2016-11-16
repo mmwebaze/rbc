@@ -130,3 +130,13 @@ form:after {
 .blink_warning {
 	color: orange;
 }
+.table_explorer {
+    border-collapse: collapse;
+    width: 40%;
+}
+
+.table_dashboard {
+    border-collapse: collapse;
+    width: 30%;
+    height: 28%;
+}
