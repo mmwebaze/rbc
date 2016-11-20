@@ -1,4 +1,4 @@
-function generateGauge(id) {
+function generateGauge(id, data) {
 	var DimChart = setExploreSize(id);
 
 	var chart = c3.generate({

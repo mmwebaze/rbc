@@ -1,8 +1,12 @@
 
 function generateBar(id, dataRows) {
+	console.debug(dataRows);
 	var DimChart = setExploreSize(id);
+	if (id == 0){
+		dataRows.splice(0,1)
 
-	var chart = c3.generate({
+	}
+	var graphObj = {
 		bindto: '#graphx' + id,
 		size: {
 			height: DimChart.height,
@@ -28,10 +32,16 @@ function generateBar(id, dataRows) {
 		legend: {
 			show: true
 		}
-	});
+	};
+	if (id == 0){
+		delete graphObj.data.x
+		delete graphObj.axis
+	}
+
+	var chart = c3.generate(graphObj);
 }
 
-function generateStackedBar(id) {
+function generateStackedBar(id, dataRows) {
 	var DimChart = setExploreSize(id);
 
 	var chart = c3.generate({

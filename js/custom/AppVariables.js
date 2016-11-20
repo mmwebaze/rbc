@@ -52,3 +52,5 @@ var default_alert_dashboards = [
 "MPPD",
 "TB"
 ];
+
+var DRILLDOWN_LEVELS = ['National','District','Province'];

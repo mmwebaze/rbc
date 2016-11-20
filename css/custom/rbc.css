@@ -140,3 +140,7 @@ form:after {
     width: 30%;
     height: 28%;
 }
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}

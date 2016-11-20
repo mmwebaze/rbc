@@ -8,6 +8,7 @@ angular.module('hiv.controllers', ['dashboard.services', 'rbc.services'])
 })
 
 .controller("hivSystemCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	var dashboardName = 'HIV_SYSTEM';
 	dashboardService.getDashboards(baseURL).get({dashboard: 'HIV_SYSTEM'}, function (dashboardDashlets) {
 		//
 		var numberDashlets = dashboardDashlets.dashlets.length;
@@ -25,20 +26,20 @@ angular.module('hiv.controllers', ['dashboard.services', 'rbc.services'])
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowAddHivSystem, 'hivSysRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowAddHivSystem, 'hivSysRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 })
 
 .controller("hivInputsCtrl", function ($scope, dashboardService, generateAnalyticService) {
-	dashboardService.getDashboards(baseURL).get({dashboard: 'HIV_INPUTS'}, function (dashboardDashlets) {
-		//
+	var dashboardName = 'HIV_INPUTS';
+	dashboardService.getDashboards(baseURL).get({dashboard: dashboardName}, function (dashboardDashlets) {
 		var numberDashlets = dashboardDashlets.dashlets.length;
 		var rows = dashboardRows(numberDashlets);
 		var dashletCount = 0;
@@ -53,21 +54,22 @@ angular.module('hiv.controllers', ['dashboard.services', 'rbc.services'])
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowHivInput, 'hivInputsRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowHivInput, 'hivInputsRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 
 })
 
 .controller("hivServDlvryCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	var dashboardName = 'HIV_SERVICE_DELIVERY';
 	dashboardService.getDashboards(baseURL).get({
-		dashboard: 'HIV_SERVICE_DELIVERY'
+		dashboard: dashboardName
 	}, function (dashboardDashlets) {
 		//
 		var numberDashlets = dashboardDashlets.dashlets.length;
@@ -84,22 +86,21 @@ angular.module('hiv.controllers', ['dashboard.services', 'rbc.services'])
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowHivDlvy, 'hivDlvyRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowHivDlvy, 'hivDlvyRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 
 })
 
 .controller("hivCoverageCtrl", function ($scope, dashboardService, generateAnalyticService) {
-	//alert('****HIV COVERAGE')
-	//
-	dashboardService.getDashboards(baseURL).get({dashboard : 'HIV_COVERAGE'}, function (dashboardDashlets) {
+	var dashboardName = 'HIV_COVERAGE';
+	dashboardService.getDashboards(baseURL).get({dashboard : dashboardName}, function (dashboardDashlets) {
 		//
 		var numberDashlets = dashboardDashlets.dashlets.length;
 		//console.debug(numberDashlets+" ***************************************")
@@ -117,18 +118,19 @@ angular.module('hiv.controllers', ['dashboard.services', 'rbc.services'])
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowAddHivCoverage, 'hivCoverageRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowAddHivCoverage, 'hivCoverageRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 
 })
 .controller("hivOutcomesCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	var dashboardName = 'HIV_OUTCOMES';
 	dashboardService.getDashboards(baseURL).get({
 		dashboard: 'HIV_OUTCOMES'
 	}, function (dashboardDashlets) {
@@ -147,13 +149,13 @@ angular.module('hiv.controllers', ['dashboard.services', 'rbc.services'])
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowHivOutcomes,'hivOutcomesRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowHivOutcomes,'hivOutcomesRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 

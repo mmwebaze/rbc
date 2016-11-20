@@ -1,7 +1,12 @@
 
 function createTable(id, data){
+	var tableStyling = 'table_dashboard';
+
+	if (id == 0)
+		tableStyling = 'table_explorer';
+
 	var bindto = '#graphx'+id;
-	var DTable = '<table class="table table-bordered table-striped table_dashboard">';
+	var DTable = '<table class="table table-bordered table-striped '+tableStyling+'">';
 	var colLength = data[0].length;
 	for (var i = 0; i < data.length; i++){
 		DTable+=('<tr>')

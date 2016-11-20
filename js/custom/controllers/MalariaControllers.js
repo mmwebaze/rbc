@@ -13,8 +13,9 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 })
 
 .controller("malariaSystemCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	var dashboardName = 'MALARIA_SYSTEM';
 	dashboardService.getDashboards(baseURL).get({
-		dashboard: 'MALARIA_SYSTEM'
+		dashboard: dashboardName
 	}, function (dashboardDashlets) {
 		//
 		var numberDashlets = dashboardDashlets.dashlets.length;
@@ -26,26 +27,27 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 		var rowMalariaSys = $('#dashMalariaSystem').append('<div id=malarisSysRow' + rowCount + ' class=row></div>');
 		for (var d = 0; d < numberDashlets; d++) {
 			dashletCount = dashletCount + 1;
-			//var analyticLink = dashlets[d].link+analyticsConfigurations;
-			var analyticLink = 'http://localhost:8181/dhis/api/analytics.json?dimension=pe\\:LAST_5_YEARS&dimension=dx\\:y0B9TaG5LG7;OClx1UoIvix&filter=ou\\:LEVEL-1&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
+			var analyticLink = dashlets[d].link+analyticsConfigurations;
+			//var analyticLink = 'http://localhost:8181/dhis/api/analytics.json?dimension=pe\\:LAST_5_YEARS&dimension=dx\\:y0B9TaG5LG7;OClx1UoIvix&filter=ou\\:LEVEL-1&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
 			var chartTitle = dashlets[d].title;
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaSys, 'malarisSysRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowMalariaSys, 'malarisSysRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 })
 
 .controller("malariaInputsCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	var dashboardName = 'MALARIA_INPUTS';
 	dashboardService.getDashboards(baseURL).get({
-		dashboard: 'MALARIA_INPUTS'
+		dashboard: dashboardName
 	}, function (dashboardDashlets) {
 		//
 		var numberDashlets = dashboardDashlets.dashlets.length;
@@ -62,21 +64,22 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaInputs, 'malariaInputsRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowMalariaInputs, 'malariaInputsRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 
 })
 
 .controller("malariaServDlvryCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	var dashboardName = 'MALARIA_SERVICE_DELIVERY';
 	dashboardService.getDashboards(baseURL).get({
-		dashboard: 'MALARIA_SERVICE_DELIVERY'
+		dashboard: dashboardName
 	}, function (dashboardDashlets) {
 		//
 		var numberDashlets = dashboardDashlets.dashlets.length;
@@ -93,21 +96,22 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaDlvy, 'malariaDlvyRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowMalariaDlvy, 'malariaDlvyRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 
 })
 
 .controller("malariaCoverageCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	var dashboardName = 'MALARIA_COVERAGE';
 	dashboardService.getDashboards(baseURL).get({
-		dashboard: 'MALARIA_COVERAGE'
+		dashboard: dashboardName
 	}, function (dashboardDashlets) {
 		//
 		var numberDashlets = dashboardDashlets.dashlets.length;
@@ -124,20 +128,21 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaCov, 'malariaCovRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowMalariaCov, 'malariaCovRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 
 })
 .controller("malariaOutcomesCtrl", function ($scope, dashboardService, generateAnalyticService) {
+	var dashboardName = 'MALARIA_OUTCOMES';
 	dashboardService.getDashboards(baseURL).get({
-		dashboard: 'MALARIA_OUTCOMES'
+		dashboard: dashboardName
 	}, function (dashboardDashlets) {
 		//
 		var numberDashlets = dashboardDashlets.dashlets.length;
@@ -154,13 +159,13 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
-			var generateAnalytics = function (link, title, uid, chartType, d) {
+			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaOutcomes, 'malariaOutcomesRow', rowCount, dashletCount, data, title, uid, chartType, d);
+					generateDashlets(rowMalariaOutcomes, 'malariaOutcomesRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
 				});
 
 			}
-			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d);
+			generateAnalytics(analyticLink, chartTitle, dashletUid, typeOfChart, d, dashboardName);
 		}
 	});
 

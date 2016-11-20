@@ -1,3 +1,15 @@
 <div ng-controller="exploreController">Hello Explorer with is: {{uidSelected}}
+	<div class="row">
+		<div class="col-md-3">
+			<select class="form-control" ng-model="selectedLevel.level" ng-change="update()" ng-options="ouLvl.level as ouLvl.displayName for ouLvl in orgLevels | filter: filterLevels"></select>
+		</div>
+		<div class="col-md-3">
+			<select class="form-control" ng-if="selectedLevel.level != '1'" ng-model="defaultOrgUnit.id" ng-options="orgUnitChild.id as orgUnitChild.displayName for orgUnitChild in orgUnitsChildren"></select>
+		</div>
+		<div class="col-md-3"></div>
+		<div class="col-md-3">
+			<button id="View_Chart" type="button" class="btn btn-primary" ng-click="viewChart(selectedLevel.level, defaultOrgUnit.id)">View Chart</button>
+		</div>
+	</div>
 	<div id="graphx0"></div>
 </div>

@@ -39,7 +39,7 @@ rbcServices.service('orgUnitLevelService', function ($resource) {
 
 rbcServices.service('getOrgUnitsByLevelService', function ($http) {
 	this.getLevelOrgUnits = function(baseURL, level){
-			return $$http.get(baseURL + 'organisationUnits.json?filter=level:eq:'+level+'fields=id,displayName&paging=false');
+			return $http.get(baseURL + 'organisationUnits.json?filter=level:eq:'+level+'&fields=id,displayName&paging=false');
 	}
 });
 
@@ -67,7 +67,7 @@ rbcServices.service('analyticService', function ($http) {
 
 rbcServices.service('generateAnalyticService', function ($resource) {
 	this.getData = function (link) {
-		//console.debug(link);
+		console.debug(link);
 		return $resource(link, {});
 	}
 });

@@ -34,7 +34,6 @@ function dashboardRows(numberDashlets) {
 		return numberDashlets / 3;
 	else{
 		var reminder = numberDashlets % 3;
-		console.debug('reminder ->'+reminder);
 		var rows = (numberDashlets - reminder)/3;
 		
 		//return (numberDashlets + 1) / 2;
