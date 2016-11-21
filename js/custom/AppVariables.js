@@ -2,7 +2,8 @@
 var baseURL = 'http://localhost:8181/dhis/api/';
 var ALERT_DASHBOARD_MAX = 6;
 var DASHBOARD_MAX = 6;
-var analyticsConfigurations = '&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
+var analyticsConfigFilterOu = '&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
+var analyticsConfigFilterPe = '&tableLayout=true&columns=dx&rows=ou&hideEmptyRows=true';
 var newDashlet = {
 	"id": "",
 	"title": "",

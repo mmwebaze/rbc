@@ -2,10 +2,10 @@
 function generateBar(id, dataRows) {
 	console.debug(dataRows);
 	var DimChart = setExploreSize(id);
-	if (id == 0){
+	/*if (id == 0){
 		dataRows.splice(0,1)
 
-	}
+	}*/
 	var graphObj = {
 		bindto: '#graphx' + id,
 		size: {
@@ -26,17 +26,15 @@ function generateBar(id, dataRows) {
 		},
 		bar: {
 			width: {ratio: 0.5},
-			// or
-			//width: 100 // this makes bar width 100px
 		},
 		legend: {
 			show: true
 		}
 	};
-	if (id == 0){
+	/*if (id == 0){
 		delete graphObj.data.x
 		delete graphObj.axis
-	}
+	}*/
 
 	var chart = c3.generate(graphObj);
 }

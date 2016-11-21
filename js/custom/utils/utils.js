@@ -42,10 +42,15 @@ function dashboardRows(numberDashlets) {
 	}
 }
 
-function parseTableLayout(data){
+function parseTableLayout(data, level){
 	var dx = data.metaData.dx;
 	var dataRows = data.rows;
-	var pe = data.metaData.pe;
+	var pe = '';
+	var ou = '';
+	if (level == 1)
+		pe = data.metaData.pe;
+	else
+		ou = data.metaData.ou;
 	var xAxis = ['x']
 	var waarde = [];
 	var columns = [];
@@ -59,8 +64,12 @@ function parseTableLayout(data){
 		for(var k = 0; k < waarde.length; k++){
 			waarde[k].push(dataRows[i][4 + k])
 		}
-	}	
-	columns.push(xAxis.concat(pe))
+	}
+	if (level == 1)	
+		columns.push(xAxis.concat(pe))
+	else
+		columns.push(xAxis.concat(ou))
+	console.debug(columns)
 	return columns.concat(waarde)
 }
 
@@ -110,7 +119,6 @@ function replaceCommas(dx){
 function getAnalyticLink(dashletUid, dashlets) {
 	for (var dashletCount = 0; dashletCount < dashlets.length; dashletCount++) {
 		var idDash = dashlets[dashletCount].id;
-		//console.debug(idDash);
 		if (dashletUid == dashlets[dashletCount].id) {
 			console.debug(idDash);
 			return dashlets[dashletCount].link;

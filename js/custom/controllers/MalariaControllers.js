@@ -27,7 +27,7 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 		var rowMalariaSys = $('#dashMalariaSystem').append('<div id=malarisSysRow' + rowCount + ' class=row></div>');
 		for (var d = 0; d < numberDashlets; d++) {
 			dashletCount = dashletCount + 1;
-			var analyticLink = dashlets[d].link+analyticsConfigurations;
+			var analyticLink = dashlets[d].link+analyticsConfigFilterOu;
 			//var analyticLink = 'http://localhost:8181/dhis/api/analytics.json?dimension=pe\\:LAST_5_YEARS&dimension=dx\\:y0B9TaG5LG7;OClx1UoIvix&filter=ou\\:LEVEL-1&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
 			var chartTitle = dashlets[d].title;
 			var typeOfChart = dashlets[d].chartType;
@@ -35,7 +35,7 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 
 			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaSys, 'malarisSysRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
+					generateDashlets(rowMalariaSys, 'malarisSysRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName, 1);
 				});
 
 			}
@@ -59,14 +59,14 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 		var rowMalariaInputs = $('#dashMalariaInputs').append('<div id=malariaInputsRow' + rowCount + ' class=row></div>');
 		for (var d = 0; d < numberDashlets; d++) {
 			dashletCount = dashletCount + 1;
-			var analyticLink = dashlets[d].link+analyticsConfigurations;
+			var analyticLink = dashlets[d].link+analyticsConfigFilterOu;
 			var chartTitle = dashlets[d].title;
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
 			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaInputs, 'malariaInputsRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
+					generateDashlets(rowMalariaInputs, 'malariaInputsRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName, 1);
 				});
 
 			}
@@ -91,14 +91,14 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 		var rowMalariaDlvy = $('#dashMalariaDelivery').append('<div id=malariaDlvyRow' + rowCount + ' class=row></div>');
 		for (var d = 0; d < numberDashlets; d++) {
 			dashletCount = dashletCount + 1;
-			var analyticLink = dashlets[d].link+analyticsConfigurations;
+			var analyticLink = dashlets[d].link+analyticsConfigFilterOu;
 			var chartTitle = dashlets[d].title;
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
 			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaDlvy, 'malariaDlvyRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
+					generateDashlets(rowMalariaDlvy, 'malariaDlvyRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName, 1);
 				});
 
 			}
@@ -123,14 +123,14 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 		var rowMalariaCov = $('#dashMalariaCoverage').append('<div id=malariaCovRow' + rowCount + ' class=row></div>');
 		for (var d = 0; d < numberDashlets; d++) {
 			dashletCount = dashletCount + 1;
-			var analyticLink = dashlets[d].link+analyticsConfigurations;
+			var analyticLink = dashlets[d].link+analyticsConfigFilterOu;
 			var chartTitle = dashlets[d].title;
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
 			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaCov, 'malariaCovRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
+					generateDashlets(rowMalariaCov, 'malariaCovRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName, 1);
 				});
 
 			}
@@ -154,14 +154,14 @@ angular.module('malaria.controllers', ['dashboard.services', 'rbc.services'])
 		var rowMalariaOutcomes = $('#dashMalariaOutcomes').append('<div id=malariaOutcomesRow' + rowCount + ' class=row></div>');
 		for (var d = 0; d < numberDashlets; d++) {
 			dashletCount = dashletCount + 1;
-			var analyticLink = dashlets[d].link+analyticsConfigurations;
+			var analyticLink = dashlets[d].link+analyticsConfigFilterOu;
 			var chartTitle = dashlets[d].title;
 			var typeOfChart = dashlets[d].chartType;
 			var dashletUid = dashlets[d].id;
 
 			var generateAnalytics = function (link, title, uid, chartType, d, dashboardName) {
 				var mData = generateAnalyticService.getData(link).get({}, function (data) {
-					generateDashlets(rowMalariaOutcomes, 'malariaOutcomesRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName);
+					generateDashlets(rowMalariaOutcomes, 'malariaOutcomesRow', rowCount, dashletCount, data, title, uid, chartType, d, dashboardName, 1);
 				});
 
 			}

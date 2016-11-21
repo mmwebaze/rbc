@@ -1,5 +1,5 @@
-function generateDashlets(addRowId, rowDomain, rowCount, dashletCount, data, title, uid, chartType, d, dashboardName){
-	var dataRows = parseTableLayout(data);
+function generateDashlets(addRowId, rowDomain, rowCount, dashletCount, data, title, uid, chartType, d, dashboardName, level){
+	var dataRows = parseTableLayout(data, level);
 	$('#'+rowDomain+'' + rowCount).append('<div class="col-md-4 col-sm-4 col-xs-12"><div class="x_panel"><div class="x_title"><small>' + title + '</small><ul class="nav navbar-right panel_toolbox"><li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-caret-square-o-down"></i></a> <ul class="dropdown-menu" role="menu"><li><a href="#/explore/'+dashboardName+'/' + uid + '/' + chartType + '">Explore</a></li></ul></li></ul><div class="clearfix"></div></div><div class="x_content" style="overflow-x: auto; overflow-y: auto; max-height: 275px;"><div id=graphx' + uid + ' style="width:400px;"></div></div></div></div>');
 
 	switch(chartType){
