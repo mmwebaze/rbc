@@ -1,6 +1,5 @@
 
 function generateBar(id, dataRows) {
-	console.debug(dataRows);
 	var DimChart = setExploreSize(id);
 	/*if (id == 0){
 		dataRows.splice(0,1)

@@ -4,7 +4,7 @@
 			<select class="form-control" ng-model="selectedLevel.level" ng-change="update()" ng-options="ouLvl.level as ouLvl.displayName for ouLvl in orgLevels | filter: filterLevels"></select>
 		</div>
 		<div class="col-md-3">
-			<select class="form-control" ng-if="selectedLevel.level != '1'" ng-model="defaultOrgUnit.id" ng-options="orgUnitChild.id as orgUnitChild.displayName for orgUnitChild in orgUnitsChildren"></select>
+			<select class="form-control" ng-if="selectedLevel.level != '1' && selectedLevel.level != '3'" ng-model="defaultOrgUnit.id" ng-options="orgUnitChild.id as orgUnitChild.displayName for orgUnitChild in orgUnitsChildren"></select>
 		</div>
 		<div class="col-md-3"></div>
 		<div class="col-md-3">

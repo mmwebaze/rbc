@@ -26,9 +26,8 @@ angular.module('explore.controllers', ['explore.services', 'rbc.services'])
 			//}
 		}
 		$scope.update = function() {
-			var myEl = angular.element( document.querySelector( '#graphx0' ) );
-			myEl.empty();
-			console.debug($scope.selectedLevel.level);
+			var graphDiv = angular.element( document.querySelector( '#graphx0' ) );
+			graphDiv.empty();
 			getOrgUnitsByLevelService.getLevelOrgUnits(baseURL, $scope.selectedLevel.level).then(function(orgUnitsChildren){
 				$scope.orgUnitsChildren = orgUnitsChildren.data['organisationUnits'];
 				$scope.defaultOrgUnit = $scope.orgUnitsChildren[0]
@@ -42,7 +41,6 @@ angular.module('explore.controllers', ['explore.services', 'rbc.services'])
 						generateDrilldown(chartType, dataRows);
 					});*/
 					var recreateExplorer = function(link){
-						console.debug("****-"+link);
 						var linkArray = link.split("&")
 						console.debug(linkArray)
 						var newLink = ''

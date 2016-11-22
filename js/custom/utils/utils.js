@@ -1,3 +1,14 @@
+function getDisplayNames(arrayOfUids, metaDataNames){
+	console.debug(metaDataNames)
+	console.debug(arrayOfUids)
+	var displayNames = []
+	for(var i = 0; i < arrayOfUids.length; i++){
+		console.debug(metaDataNames[arrayOfUids[i]])
+		displayNames.push(metaDataNames[arrayOfUids[i]]);
+	}
+	console.debug(displayNames);
+	return displayNames;
+}
 /*Updates dashlets available in dataStore*/
 function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeChart) {
 	newDashlet.id = uid;
@@ -47,16 +58,19 @@ function parseTableLayout(data, level){
 	var dataRows = data.rows;
 	var pe = '';
 	var ou = '';
-	if (level == 1)
+	if (level == 1){
 		pe = data.metaData.pe;
-	else
+	}
+	else{
 		ou = data.metaData.ou;
+		ou = getDisplayNames(ou, data.metaData.names)
+	}
 	var xAxis = ['x']
 	var waarde = [];
 	var columns = [];
 	for (var k = 0; k < dx.length; k++){
 		var namen = [];
-		namen.push(dx[k]);
+		namen.push(data.metaData.names[dx[k]]);
 		waarde.push(namen);
 	}
 	for (var i =0; i < dataRows.length; i++){
@@ -69,7 +83,6 @@ function parseTableLayout(data, level){
 		columns.push(xAxis.concat(pe))
 	else
 		columns.push(xAxis.concat(ou))
-	console.debug(columns)
 	return columns.concat(waarde)
 }
 

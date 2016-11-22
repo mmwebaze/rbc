@@ -14,7 +14,6 @@ function generateDashlets(addRowId, rowDomain, rowCount, dashletCount, data, tit
 			break;
 		case 'pie':
 			dataRows.splice(0,1)
-			console.debug(dataRows)
 			generatePichart(uid, dataRows, title)
 			break;
 		case 'line':
