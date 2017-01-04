@@ -6,7 +6,7 @@ var analyticsConfigFilterOu = '&tableLayout=true&columns=dx&rows=pe&hideEmptyRow
 var analyticsConfigFilterPe = '&tableLayout=true&columns=dx&rows=ou&hideEmptyRows=true';
 var targetReference = {
 	"deUid": "",
-	"targetUid": "",
+	"targetValue": "",
 	"performance":"",
 	"iconSet":""
 };

@@ -10,17 +10,17 @@ function getDisplayNames(arrayOfUids, metaDataNames){
 	return displayNames;
 }
 /*Updates dashlets available in dataStore*/
-function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeChart) {
-	console.debug("HAHAHAHA")
+function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeChart, targetPerformance, targetIconStatus) {
 	var dashletObj = '';
 	if (typeChart === 'target'){
-		var linkArray = link.split("&");
-		var linkArray2 = linkArray[0].split('=dx\\:');
-		var dataElementsSelected = linkArray2[1].split(';');
+		var linkDataElements = link.split("&");
+		var dataElementsArray = linkDataElements[0].split('=dx\\:');
+		var dataElementsSelected = dataElementsArray[1].split(';');
+		var targetLink = baseURL+'analytics.json?dimension=dx\\:'+dataElementsSelected[1]+'&dimension=pe\\:THIS_YEAR&filter=ou\\:LEVEL-1';
 		targetReference.deUid = dataElementsSelected[0];
-		targetReference.targetUid = dataElementsSelected[1];
-		targetReference.performance = '+';
-		targetReference.iconSet = 'YES/NO';
+		targetReference.targetValue = targetLink;
+		targetReference.performance = targetPerformance;
+		targetReference.iconSet = targetIconStatus;
 		dashletObj = targetReference;
 	}
 	else{
@@ -30,11 +30,6 @@ function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeCh
 		newDashlet.chartType = typeChart;
 		dashletObj = newDashlet;
 	}
-
-	/*newDashlet.id = uid;
-	newDashlet.title = chartTitle;
-	newDashlet.link = link;
-	newDashlet.chartType = typeChart;*/
 
 	var updatedDashboard = {
 		"dashlets": ""

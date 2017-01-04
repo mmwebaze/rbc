@@ -63,7 +63,7 @@
 				controller : "setupController"
 			})
 			.otherwise({
-				redirectTo: "hiv"
+				redirectTo: "visualizer"
 			});
 	});
 

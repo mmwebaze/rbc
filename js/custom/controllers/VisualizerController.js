@@ -10,44 +10,27 @@ angular.module('visualizer.controllers', ['dashboard.services', 'chartServices',
 })
 
 .controller("SaveChartController", function ($scope, dashletService, analyticService, generateUidService, updateDashboardService,generateAnalyticService, $http) {
-	$scope.saveChart = function (typeChart, chartTitle, selectedDashboard, dx, pe, ou) {
-	
+	$scope.saveChart = function (typeChart, chartTitle, selectedDashboard, dx, pe, ou, targetPerform, targetIconset) {
 		var getLink = function(dx, pe, ou){
 			return analyticService.getAnalyticsLink(baseURL, dx, pe, ou);
 		};
-		var visualHasData = true;
-			//var link = analyticService.getAnalyticsLink(baseURL, dx, pe, ou);
+		
 			var link = getLink(dx, pe, ou);
 
-			var checkForData = function(link, visual){
-				generateAnalyticService.getData(link).get({}, function (data) {
-
-				//var visual = true;
-					if (data.rows.length == 0){
-						console.debug(' ***** before '+visual)
-						visual = true
-						console.debug(' ***** after '+visual)
-						return visual;
-					}else
-						return visual;
-				});
-			}
-
 			if (chartTitle != null) {
-				var statusT = checkForData(link, visualHasData);
-				console.debug('statusT is '+statusT)
+				//var statusT = checkForData(link, visualHasData);
+				//console.debug('statusT is '+statusT)
 				//if (statusT){
 					var getUid = function(){
 						return generateUidService.generateUid(baseURL).get({});
 					}
 					var uid = getUid();
 
-
 					dashletService.getDashlets(baseURL, selectedDashboard).then(function (response) {
 						var numberDashlets = response.data.dashlets.length;
 						var dashlets = response.data.dashlets
 
-						updateDashboardService.updateDashboardDashlet(selectedDashboard, numberDashlets, dashlets, uid.codes[0], chartTitle, link, typeChart);
+						updateDashboardService.updateDashboardDashlet(selectedDashboard, numberDashlets, dashlets, uid.codes[0], chartTitle, link, typeChart, targetPerform, targetIconset);
 
 					});
 				//}
@@ -76,6 +59,10 @@ angular.module('visualizer.controllers', ['dashboard.services', 'chartServices',
 			console.debug(selectedChart);
 			$scope.typeChart = selectedChart;
 		}
+
+		$scope.targetPerform = '+ve';
+		$scope.targetIconset = 'TREND';
+
 
 		dataElementGroupsService.getDataElementGroups(baseURL).get({}, function(allDataElementGroups){
 			$scope.dataElementGroups = allDataElementGroups.dataElementGroups;
