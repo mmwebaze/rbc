@@ -1,6 +1,6 @@
 'use strict';
 
-var alertServices = angular.module('alert.services',[]);
+var alertServices = angular.module('alert.services',[])
 
 /*alertSrvcs.service('exploreService', function ($resource) {
 	return {

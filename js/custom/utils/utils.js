@@ -11,10 +11,30 @@ function getDisplayNames(arrayOfUids, metaDataNames){
 }
 /*Updates dashlets available in dataStore*/
 function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeChart) {
-	newDashlet.id = uid;
+	console.debug("HAHAHAHA")
+	var dashletObj = '';
+	if (typeChart === 'target'){
+		var linkArray = link.split("&");
+		var linkArray2 = linkArray[0].split('=dx\\:');
+		var dataElementsSelected = linkArray2[1].split(';');
+		targetReference.deUid = dataElementsSelected[0];
+		targetReference.targetUid = dataElementsSelected[1];
+		targetReference.performance = '+';
+		targetReference.iconSet = 'YES/NO';
+		dashletObj = targetReference;
+	}
+	else{
+		newDashlet.id = uid;
+		newDashlet.title = chartTitle;
+		newDashlet.link = link;
+		newDashlet.chartType = typeChart;
+		dashletObj = newDashlet;
+	}
+
+	/*newDashlet.id = uid;
 	newDashlet.title = chartTitle;
 	newDashlet.link = link;
-	newDashlet.chartType = typeChart;
+	newDashlet.chartType = typeChart;*/
 
 	var updatedDashboard = {
 		"dashlets": ""
@@ -22,7 +42,7 @@ function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeCh
 
 	if (numberDashlets === DASHBOARD_MAX) {
 
-		dashlets.unshift(newDashlet);
+		dashlets.unshift(dashletObj);
 		console.debug(dashlets)
 
 		//then delete last from array
@@ -30,7 +50,7 @@ function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeCh
 
 		updatedDashboard.dashlets = dashlets;
 	} else {
-		dashlets.unshift(newDashlet);
+		dashlets.unshift(dashletObj);
 
 		updatedDashboard.dashlets = dashlets;
 	}

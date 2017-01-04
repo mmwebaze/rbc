@@ -4,20 +4,34 @@ var ALERT_DASHBOARD_MAX = 6;
 var DASHBOARD_MAX = 6;
 var analyticsConfigFilterOu = '&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
 var analyticsConfigFilterPe = '&tableLayout=true&columns=dx&rows=ou&hideEmptyRows=true';
+var targetReference = {
+	"deUid": "",
+	"targetUid": "",
+	"performance":"",
+	"iconSet":""
+};
+var target_Reference_dashlet = {"targetRefeneces":[]}
 var newDashlet = {
 	"id": "",
 	"title": "",
-	"link": "My modified link",
-	"chartType": "chart",
-	"target": 4000
+	"link": "",
+	"chartType": ""
 };
+//ChartType (alert, table, pie, bar, rose, line)
+var alert_dashlet = {"alerts":[]};
 var default_setup = {
   "name": "RBC_SETUP",
   "value": "0"
 };
 var default_dashlet = {"dashlets":[]};
+//var alert_dataStore = 'rbcalerts';
 var default_dataStore = 'rbcdashboard';
 var default_dashboards = [
+"NAT_COVERAGE",
+"NAT_INPUTS",
+"NAT_OUTCOMES",
+"NAT_SERVICE_DELIVERY",
+"NAT_SYSTEM",
 "HIV_COVERAGE",
 "HIV_INPUTS",
 "HIV_OUTCOMES",
@@ -42,16 +56,9 @@ var default_dashboards = [
 "TB_INPUTS",
 "TB_OUTCOMES",
 "TB_SERVICE_DELIVERY",
-"TB_SYSTEM"
-];
-
-var default_alert_dataStore = 'rbcalerts'
-var default_alert_dashboards = [
-"HIV",
-"MALARIA",
-"MCCH",
-"MPPD",
-"TB"
+"TB_SYSTEM",
+"ALERTS",
+"TARGET_REFERENCE"
 ];
 
 var DRILLDOWN_LEVELS = ['National','District','Province'];
