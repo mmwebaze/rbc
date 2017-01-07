@@ -1,8 +1,7 @@
 /*jslint white:true */
 /*global angular */
 (function () {
-	var rbcapp = angular.module('rbcapp', [
-	'd2Menu', 'ngRoute', 'ui.bootstrap',
+	var rbcapp = angular.module('rbcapp', ['ngRoute',
 	'rbc.services',
 	//'chartServices',
 	//'rbcapp.services',
@@ -12,18 +11,21 @@
 	'setup.services',
 	'alert.controllers',
 	'setup.controllers',
-	'explore.controllers',
+	/*'explore.controllers',
 	'hiv.controllers',
 	'malaria.controllers',
 	'mppd.controllers',
 	'mcch.controllers',
-	'tb.controllers',
+	'tb.controllers',*/
 	'visualizer.controllers'
 	/*'dashboard.controllers'*/
 	]);
 	rbcapp.config(function ($routeProvider) {
 		$routeProvider
-			.when("/hiv", {
+			.when("/nat_system", {
+				templateUrl: "partials/nationalsystem.html"
+			})
+			/*.when("/hiv", {
 				templateUrl: "partials/hiv.html",
 				controller: "hivController"
 			})
@@ -42,7 +44,7 @@
 			.when("/tb", {
 				templateUrl: "partials/tb.html",
 				controller : "tbController"
-			})
+			})*/
 			.when("/visualizer", {
 				templateUrl: "partials/visualizer.html"
 					//controller : "visualizerController"
@@ -60,7 +62,7 @@
 				controller : "setupController"
 			})
 			.otherwise({
-				redirectTo: "visualizer"
+				redirectTo: "nat_system"
 			});
 	});
 	

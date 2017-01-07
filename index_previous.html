@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html ng-app="rbcapp">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>servicedelivery</title>
-    <!-- Core CSS - Include with every page -->
-    <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <link href="assets/css/main-style.css" rel="stylesheet" />
-    <!-- Page-Level CSS -->
-    <link href="assets/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
-   </head>
-<body>
+
     <!--  wrapper -->
     <div id="wrapper">
         <!-- navbar top -->
@@ -72,19 +57,19 @@
                                 <a href="#">National</a>
                             </li>
                             <li>
-                                <a href="#/nat_system">System</a>
+                                <a href="#">System</a>
                             </li>
 							 <li>
-                                 <a href="#/nat_input">Input</a>
+                                 <a href="#">Input</a>
                            </li>
 					 <li>
-                        <a href="#/nat_service"><i class="fa fa-table fa-fw"></i>Service Delivery</a>
+                        <a href="#"><i class="fa fa-table fa-fw"></i>Service Delivery</a>
                     </li>
                     <li>
-                        <a href="#/nat_coverage"><i class="fa fa-edit fa-fw"></i>Coverage</a>
+                        <a href="#"><i class="fa fa-edit fa-fw"></i>Coverage</a>
                     </li>
 					<li>
-                        <a href="#/nat_outcomes"><i class="fa fa-edit fa-fw"></i>Outcomes</a>
+                        <a href="#"><i class="fa fa-edit fa-fw"></i>Outcomes</a>
                     </li>
 					
                         </ul>
@@ -211,45 +196,99 @@
 		
         <!-- end navbar side -->
         <!--  page-wrapper -->
-		<div id="page-wrapper">
+        <div id="page-wrapper">
+        
+			<!-- Content Row -->
+            <div class="row">
+           
+                <div class="col-lg-4">
+                     <!--  Bar Chart -->
+                    <div class="panel panel-default">
+                     
+                        <div class="panel-body">
+                            <div id="morris-bar-chart">
+							<img class="img-responsive" src="assets/img/Picture4.png"/>
+							</div>
+							
+                        </div>
+                    </div>
+            		<!-- End Bar Chart -->
+            		
+            		 <!--  Line Chart -->
+                    <div class="panel panel-default">
+                       
+                        <div class="panel-body">
+                            <div id="morris-line-chart"><img class="img-responsive" src="assets/img/Picture4.png"/></div>
+							
+						</div>
+                    </div>
+                     <!--  End Line Chart -->
+            		
+                </div>
+                
+                <div class="col-lg-8">
+                	
+                	<div class="row">
+                		<div class="col-lg-8">
+		                    <!--  Area Chart -->
+		                    <div class="panel panel-default">
+		                        <div class="panel-body">
+		                           <div id="morris-line-chart"><img class="img-responsive" src="assets/img/Picture5.png"/></div>
+		                        </div>
+		                    </div>
+	                    	<!-- End Area Chart -->
+	                    </div>
+                    	<div class="col-lg-4">
+                    		<!--  Donut Chart -->
+		                    <div class="panel panel-default">
+		                        <div class="panel-body">
+		                            <div id="morris-donut-chart"><img class="img-responsive" src="assets/img/Picture6.png"/></div>
+		                        </div>
+		                    </div>
+		                    <!-- End Donut Chart -->
+                    	</div>
+                    </div>
+                    
+                    <div class="row">
+                    	<div class="col-lg-12">
+                    		<!--  Donut Chart -->
+		                    <div class="panel panel-default">
+		                        <div class="panel-body">
+		                            <div id="morris-donut-chart"><img class="img-responsive" src="assets/img/Picture7.png"/></div>
+		                        </div>
+		                    </div>
+		                    <!-- End Donut Chart -->
+                    	</div>
+                    </div>
+                    
+                    <div class="row">
+                    	<div class="col-lg-8">
+                    		 <!--  Donut Chart -->
+		                    <div class="panel panel-default">
+		                        <div class="panel-body">
+		                            <div id="morris-donut-chart">
+									<img class="img-responsive" src="assets/img/Picture5.png"/>
+									</div>
+		                        </div>
+		                    </div>
+		                    <!-- End Donut Chart -->
+                    	</div>
+                    	<div class="col-lg-4">
+                    		<!--  Donut Chart -->
+		                    <div class="panel panel-default">
+		                        <div class="panel-body">
+		                            <div id="morris-donut-chart"><img class="img-responsive" src="assets/img/Picture6.png"/></div>
+		                        </div>
+		                    </div>
+		                    <!-- End Donut Chart -->
+                    	</div>
+                    </div>
+                    
+                </div>
+          </div>
 
-           <br/><br/><br/>
-            
-		<div ng-view> </div>
-
-  		</div>
-    	<!-- end page-wrapper -->
+        </div>
+        <!-- end page-wrapper -->
 
     </div>
     <!-- end wrapper -->
-
-    <!-- Core Scripts - Include with every page -->
-    <script src="assets/plugins/jquery-1.10.2.js"></script>
-    <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="assets/plugins/pace/pace.js"></script>
-    <script src="assets/scripts/siminta.js"></script>
-    <!-- Page-Level Plugin Scripts-->
-    <script src="assets/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="assets/plugins/morris/morris.js"></script>
-    <script type="text/javascript" src="js/lib/angular.min.js"></script>
-    <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
-    <script type="text/javascript" src="js/lib/angular-resource.js"></script>
-    <script type="text/javascript" src="js/custom/services/services.js"></script>
-    <script type="text/javascript" src="js/custom/services/PeriodServices.js"></script>
-    <script type="text/javascript" src="js/custom/services/SetupServices.js"></script>
-    <script type="text/javascript" src="js/custom/services/DashboardService.js"></script>
-    <script type="text/javascript" src="js/custom/chartService.js"></script>
-    <script type="text/javascript" src="js/custom/services/VisualizerServices.js"></script>
-    <!-- <script type="text/javascript" src="js/custom/services/AlertServices.js"></script> -->
-    <script type="text/javascript" src="js/custom/services/ExploreServices.js"></script>
-    <script type="text/javascript" src="js/custom/controllers/SetupControllers.js"></script>
-    <script type="text/javascript" src="js/custom/controllers/ExploreControllers.js"></script>
-    <script type="text/javascript" src="js/custom/controllers/AlertController.js"></script>
-    <script type="text/javascript" src="js/custom/controllers/VisualizerController.js"></script>
-    <script type="text/javascript" src="js/custom/controllers/DashboardController.js"></script>
-    <script type="text/javascript" src="js/custom/rbcapp.js"></script>
-
-</body>
-
-</html>
