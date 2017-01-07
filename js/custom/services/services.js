@@ -20,6 +20,14 @@ rbcServices.service('dataElementService', function ($resource) {
 	}
 });
 
+rbcServices.service('indicatorService', function ($resource) {
+	return {
+		getIndicators: function (baseURL) {
+			return $resource(baseURL + 'indicators.json?fields=id,displayName&paging=false', {});
+		}
+	}
+});
+
 rbcServices.service('dataElementGroupsService', function ($resource) {
 
 		this.getDataElementGroups = function (baseURL) {
@@ -58,10 +66,11 @@ rbcServices.service('analyticService', function ($http) {
 	this.getAnalyticsLink = function (baseURL, dx, pe, ou) {
 		//alert(dx)
 		var dxElement = replaceCommas(dx);
+		var pePeriod = replaceCommas(pe);
 		//alert(dxElement+' ***');
 
 			//return baseURL + 'analytics.json?dimension=dx\\:' + dxElement + '&dimension=pe\\:' + pe + '&dimension=ou\\:' + ou
-		return baseURL + 'analytics.json?dimension=dx\\:' + dxElement + '&dimension=pe\\:' + pe + '&filter=ou\\:LEVEL-' + ou
+		return baseURL + 'analytics.json?dimension=dx\\:' + dxElement + '&dimension=pe\\:' + pePeriod + '&filter=ou\\:LEVEL-' + ou
 	}
 });
 
@@ -106,3 +115,4 @@ rbcServices.factory('orgUnitByLevelService', function ($resource) {
 		}
 	}
 });
+

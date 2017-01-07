@@ -1,3 +1,11 @@
+/*Replaces commas found in multiple selected data elements*/
+function replaceCommas(dx){
+	var dxString = dx.toString();
+	var replaceWith = ";"
+	dxString = dxString.replace(/,/g, replaceWith)
+	return dxString;
+}
+
 function getDisplayNames(arrayOfUids, metaDataNames){
 	console.debug(metaDataNames)
 	console.debug(arrayOfUids)
@@ -10,18 +18,24 @@ function getDisplayNames(arrayOfUids, metaDataNames){
 	return displayNames;
 }
 /*Updates dashlets available in dataStore*/
-function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeChart, targetPerformance, targetIconStatus) {
+function updateDashboard(numberDashlets, dashlets, uid, chartTitle, link, typeChart, targetPerformance, targetIconStatus, selectedTargetDataElement, selectedTargetPeriod) {
+	console.debug(selectedTargetDataElement+" ==="+ selectedTargetPeriod);
 	var dashletObj = '';
-	if (typeChart === 'target'){
-		var linkDataElements = link.split("&");
+	if (typeChart === 'alert'){
+		/*var linkDataElements = link.split("&");
 		var dataElementsArray = linkDataElements[0].split('=dx\\:');
-		var dataElementsSelected = dataElementsArray[1].split(';');
-		var targetLink = baseURL+'analytics.json?dimension=dx\\:'+dataElementsSelected[1]+'&dimension=pe\\:THIS_YEAR&filter=ou\\:LEVEL-1';
-		targetReference.deUid = dataElementsSelected[0];
-		targetReference.targetValue = targetLink;
-		targetReference.performance = targetPerformance;
-		targetReference.iconSet = targetIconStatus;
-		dashletObj = targetReference;
+		var dataElementsSelected = dataElementsArray[1].split(';');*/
+		//var targetLink = baseURL+'analytics.json?dimension=dx\\:'+selectedTargetDataElement+'&dimension=pe\\:THIS_YEAR&filter=ou\\:LEVEL-1';
+		var targetLink = baseURL+'analytics.json?dimension=dx\\:'+selectedTargetDataElement+'&dimension=pe\\:'+selectedTargetPeriod+'&filter=ou\\:LEVEL-1';
+		alert.id = uid;
+		alert.title=chartTitle;
+		alert.link = link;
+		//targetReference.deUid = dataElementsSelected[0];
+		alert.targetValue = targetLink;
+		alert.performance = targetPerformance;
+		alert.iconSet = targetIconStatus;
+		alert.chartType = typeChart;
+		dashletObj = alert;
 	}
 	else{
 		newDashlet.id = uid;
@@ -134,14 +148,6 @@ function setExploreSize(id){
 	}
 
 	return chartDim;
-}
-
-/*Replaces commas found in multiple selected data elements*/
-function replaceCommas(dx){
-	var dxString = dx.toString();
-	var replaceWith = ";"
-	dxString = dxString.replace(/,/g, replaceWith)
-	return dxString;
 }
 
 function getAnalyticLink(dashletUid, dashlets) {

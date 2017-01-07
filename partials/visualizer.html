@@ -11,9 +11,9 @@
 					<option value="tacho">Speed</option>
 					<option value="pie">Pie</option>
 					<option value="stacked">Stacked</option>
-					<option value="pivot">pivot</option>
-					<option value="alert">alert</option>
-					<option value="target">Target Reference</option>
+					<option value="pivot">Pivot</option>
+					<option value="alert">Alert</option>
+					<option value="rose">Rose</option>
 				</select>
 			</div>
 			<div class="row label-space-1"><span class="label label-info">Set Target Performance()</span></div>
@@ -34,19 +34,36 @@
 			<div class="row">
 				<select class="form-control" ng-model="selectedDataElementGroup.id"  ng-change="selectDataElementGroup(selectedDataElementGroup.id)" ng-options="deGrp.id as deGrp.displayName for deGrp in dataElementGroups"></select>
 			</div>
-			<div class="row row-buffer"></div>
+			<!-- <div class="row row-buffer"></div> -->
 			<div class="row label-space-1"><span class="label label-info">Data Element</span></div>
 			<div class="row">
 				<select class="form-control" ng-model="selectedDataElement.id" ng-options="de.id as de.displayName for de in dataElements" multiple></select>
 			</div>
-			<div class="row row-buffer"></div>
+			<div class="row label-space-1"><span class="label label-info">Indicators</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedIndicators.id" ng-options="de.id as de.displayName for de in indicators" multiple></select>
+			</div>
 			<div class="row label-space-1"><span class="label label-info">Period</span></div>
 			<div class="row">
-				<select class="form-control" ng-model="selectedPeriod.id" ng-options="pe.id as pe.textValue for pe in periods">
+				<select class="form-control" ng-model="selectedPeriod.id" ng-options="pe.id as pe.textValue for pe in periods" multiple>
 					<!--<option ng-repeat="(key, value) in periods" value={{key}}> {{value}}</option>-->
 				</select>
 			</div>
-			<div class="row row-buffer"></div>
+			<div class="row label-space-1"><span class="label label-info">Select Target Data Element Source</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedTargetDataElementGroup.id"  ng-change="selectTargetDataElementGroup(selectedTargetDataElementGroup.id)" ng-options="deGrp.id as deGrp.displayName for deGrp in targetDataElementGroups"></select>
+			</div>
+			<div class="row label-space-1"><span class="label label-info">Target Data Element</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedTargetDataElement.id" ng-options="de.id as de.displayName for de in targetDataElements"></select>
+			</div>
+			
+			<div class="row label-space-1"><span class="label label-info">Target Period</span></div>
+			<div class="row">
+				<select class="form-control" ng-model="selectedTargetPeriod.id" ng-options="pe.id as pe.textValue for pe in periods">
+					<!--<option ng-repeat="(key, value) in periods" value={{key}}> {{value}}</option>-->
+				</select>
+			</div>
 			<div class="row label-space-1"><span class="label label-info">Organisation Unit Levels</span></div>
 			<div class="row">
 				<select class="form-control" ng-model="selectedLevel.level" ng-options="ouLvl.level as ouLvl.displayName for ouLvl in orgLevels"></select>
@@ -67,7 +84,7 @@
 				</div>
 				<div class="col-sm-2">
 					<div ng-controller="SaveChartController">
-						<button id="saveChart" type="button" class="btn btn-primary" ng-click="saveChart(typeChart, chartTitle, defaultDashboard, selectedDataElement.id, selectedPeriod.id, selectedLevel.level, targetPerform, targetIconset)">Save</button>
+						<button id="saveChart" type="button" class="btn btn-primary" ng-click="saveChart(typeChart, chartTitle, defaultDashboard, selectedDataElement.id, selectedPeriod.id, selectedLevel.level, targetPerform, targetIconset, selectedTargetDataElement.id, selectedTargetPeriod.id, selectedIndicators.id)">Save</button>
 					</div>
 				</div>
 			</div>

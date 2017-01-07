@@ -4,11 +4,16 @@ var ALERT_DASHBOARD_MAX = 6;
 var DASHBOARD_MAX = 6;
 var analyticsConfigFilterOu = '&tableLayout=true&columns=dx&rows=pe&hideEmptyRows=true';
 var analyticsConfigFilterPe = '&tableLayout=true&columns=dx&rows=ou&hideEmptyRows=true';
-var targetReference = {
-	"deUid": "",
+var alert = {
+	"id": "",
+	//"deUid": "",
+	"title": "",
+	"link": "",
+	"chartType": "",
 	"targetValue": "",
 	"performance":"",
-	"iconSet":""
+	"iconSet":"",
+	"description" : "Performance and iconset descriptions"
 };
 var target_Reference_dashlet = {"targetRefeneces":[]}
 var newDashlet = {

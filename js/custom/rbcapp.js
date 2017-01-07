@@ -1,7 +1,6 @@
 /*jslint white:true */
 /*global angular */
 (function () {
-
 	var rbcapp = angular.module('rbcapp', [
 	'd2Menu', 'ngRoute', 'ui.bootstrap',
 	'rbc.services',
@@ -22,8 +21,6 @@
 	'visualizer.controllers'
 	/*'dashboard.controllers'*/
 	]);
-
-
 	rbcapp.config(function ($routeProvider) {
 		$routeProvider
 			.when("/hiv", {
@@ -66,17 +63,14 @@
 				redirectTo: "visualizer"
 			});
 	});
-
 	
 	rbcapp.controller("TabCtrl", function ($scope) {
-
 		this.tab = 1;
 		$scope.selectTab = function (setTab) {
 			$( "#malaria_main" ).remove();
 			this.tab = setTab;
 		};
 		$scope.isSelected = function (checkTab) {
-
 			return this.tab === checkTab;
 		}
 	});
